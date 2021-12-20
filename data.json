@@ -1,0 +1,50 @@
+{
+    "product": {
+        "1": {
+            "title": "Product one",
+            "quantity": 10,
+            "description": "hello",
+            "price":  10,
+            "author": "Someone"
+        },
+        "2": {
+            "title": "Product two",
+            "quantity": 20,
+            "description": "hello",
+            "price":  10,
+            "author": "Someone"
+        },
+        "3": {
+            "title": "Product three",
+            "quantity": 40,
+            "description": "hello",
+            "price":  10,
+            "author": "Someone"
+        },
+        "4": {
+            "title": "Product four",
+            "quantity": 12,
+            "description": "hello",
+            "price":  10,
+            "author": "Someone"
+        },
+        "5": {
+            "title": "Product five",
+            "quantity": 8,
+            "description": "hello",
+            "price":  10,
+            "author": "Someone"
+        }
+    },
+    "customer": {
+        "1": {
+            "name": "Person 1",
+            "email": "person1@mail.com",
+            "phone_num": "0123456789",
+            "address": "01 Main St"
+        }
+    },
+    "order": {
+
+    }
+}
