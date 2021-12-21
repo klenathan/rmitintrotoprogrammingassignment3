@@ -11,7 +11,7 @@ def search_by_name(data):
         else:
             print("Not found")
             ### ADD option to keep searching
-            return "none"
+            return None
 
 
 def search_by_id(data, field, search_id):

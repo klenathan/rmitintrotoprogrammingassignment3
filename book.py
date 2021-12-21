@@ -2,7 +2,7 @@ import json
 import tqdm
 
 class book:
-    def __init__(self, data, id):
+    def __init__(self, data: dict, id: str):
         self.id = id
         self.title = data["product"][id]["title"]
         self.quantity = data["product"][id]["quantity"]

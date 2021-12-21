@@ -55,8 +55,8 @@ def search_name(data):
     '''
     searched_book_id = search_by_name(data)
     cls()
-    if searched_book_id == 'none':
-        print('error')
+    if searched_book_id == None:
+        print('Book not found')
     else:
         for detail in product_field[searched_book_id]:
             print(f'{detail}: {product_field[searched_book_id][detail]}')
