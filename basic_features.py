@@ -1,22 +1,18 @@
 
 
+
 # Search
 
-def search_by_name(data):
-    user_input = input("\nBook name?: ")
+def search_by_name(data, book_name):
     for id in data["product"]:
         title = data["product"][id]["title"]
-        if title == user_input:
+        if title == book_name:
             return id
         else:
-            print("Not found")
+            print("Invalid book name! Please try again")
             ### ADD option to keep searching
             return None
 
 
-def search_by_id(data):
-    user_input = input('\nBook Id?: ')
-    if int(user_input) <= 5:
-        return data['product'][user_input]
-    else:
-        return None
+def search_by_id(data, field, search_id):
+    return data[field][search_id]
