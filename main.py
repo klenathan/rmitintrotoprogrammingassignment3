@@ -12,19 +12,28 @@ def open_file():
 
 
 # user option
-def user_option():
-    option = input('''
-Choose one of these options:
+
+"""
+Check-list:
 0. Exit
 1. List all items #Done -Thu 
 2. Search item by name #Done - Thu
 3. Search item by item id #Done - Thu
 4. List all information of a specific customer
-5. Placing orders
+5. Placing orders #Done? Thai To-do: implement 4 to 5
 6. Shipping management
 7. Payment management
 8. Discount
-9. Return shipment 
+9. Return shipment -> should have ?
+"""
+
+def user_option():
+    option = input('''
+Choose one of these options:
+0. Exit
+1. List all items 
+2. Search item by name 
+3. Search item by item id 
 Your option:  ''')
     if(option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']):
         print('Wrong input, please try again!')
@@ -37,23 +46,26 @@ if __name__ == '__main__':
         while True:
             user = user_option()
             json_data, product_field, customer_field, json_file = open_file()
-            # exit
+            # Exit program
             if user == 0:
                 cls()
                 print('\nThank you for visiting our store! Hope to see you again!')
                 exit(0)
-            elif user == 1: # list items and get info of a specific item
+            # List items and get info of a specific item
+            elif user == 1:
                 cls()
-                list_all(product_field, json_data)
-            elif user == 2: # search item by name 
+                list_all(json_data)
+            # Search item by name
+            elif user == 2:
                 cls()
-                search_by_name(product_field,json_data)
-            elif user == 3: # search item by ID
+                search_by_name(json_data)
+            # Search item by ID
+            elif user == 3:
                 cls()
-                search_item(product_field, json_data)
-            elif user == 4: # Return shipment 
+                search_item(json_data)
+            elif user == 4:
                 cls()
-                handle_order(json_data)
+                pass
             elif user == 5:
                 cls()
                 pass

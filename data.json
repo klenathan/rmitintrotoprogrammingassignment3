@@ -2,7 +2,7 @@
     "product": {
         "1": {
             "title": "Product one",
-            "quantity": 10,
+            "quantity": 9,
             "description": "hello",
             "price": 10,
             "author": "Someone"
@@ -45,6 +45,7 @@
             "address": "01 Main St"
         },
         "2": {
+            "id": "2",
             "name": "Person 2",
             "email": "person2@mail.com",
             "phone_num": "0123456789",
@@ -69,6 +70,13 @@
             "email": "S3891890@gmail.com",
             "phone_num": "123345567",
             "address": "012 main St"
+        },
+        "6": {
+            "id": "6",
+            "name": "abc",
+            "email": "we",
+            "phone_num": "12",
+            "address": "01"
         }
     },
     "order": {
@@ -77,24 +85,6 @@
             "customer_id": "7",
             "product_id": "1",
             "customer_address": "abc"
-        },
-        "5XVSN3X": {
-            "id": "5XVSN3X",
-            "customer_id": "4",
-            "product_id": "1",
-            "customer_address": "abc"
-        },
-        "RKD4QNT": {
-            "id": "RKD4QNT",
-            "customer_id": "5",
-            "product_id": "1",
-            "customer_address": "012 main St"
-        },
-        "BT8JQR7": {
-            "id": "BT8JQR7",
-            "customer_id": "1",
-            "product_id": "1",
-            "customer_address": "01 Main St"
         }
     }
 }
