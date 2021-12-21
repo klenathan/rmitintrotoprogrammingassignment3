@@ -14,5 +14,9 @@ def search_by_name(data):
             return None
 
 
-def search_by_id(data, field, search_id):
-    return data[field][search_id]
+def search_by_id(data):
+    user_input = input('\nBook Id?: ')
+    if int(user_input) <= 5:
+        return data['product'][user_input]
+    else:
+        return None

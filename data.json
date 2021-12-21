@@ -42,6 +42,18 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St"
+        },
+        "2": {
+            "name": "Person 2",
+            "email": "person2@mail.com",
+            "phone_num": "0123456789",
+            "address": "01 Main St"
+        },
+        "3": {
+            "name": "Person 3",
+            "email": "person3@mail.com",
+            "phone_num": "0123456789",
+            "address": "01 Main St"
         }
     },
     "order": {
