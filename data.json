@@ -4,40 +4,41 @@
             "title": "Product one",
             "quantity": 10,
             "description": "hello",
-            "price":  10,
+            "price": 10,
             "author": "Someone"
         },
         "2": {
             "title": "Product two",
             "quantity": 20,
             "description": "hello",
-            "price":  10,
+            "price": 10,
             "author": "Someone"
         },
         "3": {
             "title": "Product three",
             "quantity": 40,
             "description": "hello",
-            "price":  10,
+            "price": 10,
             "author": "Someone"
         },
         "4": {
             "title": "Product four",
             "quantity": 12,
             "description": "hello",
-            "price":  10,
+            "price": 10,
             "author": "Someone"
         },
         "5": {
             "title": "Product five",
             "quantity": 8,
             "description": "hello",
-            "price":  10,
+            "price": 10,
             "author": "Someone"
         }
     },
     "customer": {
         "1": {
+            "id": "1",
             "name": "Person 1",
             "email": "person1@mail.com",
             "phone_num": "0123456789",
@@ -54,9 +55,46 @@
             "email": "person3@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St"
+        },
+        "4": {
+            "id": "4",
+            "name": "123",
+            "email": "123",
+            "phone_num": "123",
+            "address": "abc"
+        },
+        "5": {
+            "id": "5",
+            "name": "Nam Thai Tran",
+            "email": "S3891890@gmail.com",
+            "phone_num": "123345567",
+            "address": "012 main St"
         }
     },
     "order": {
-
+        "ZQEPE21": {
+            "id": "ZQEPE21",
+            "customer_id": "7",
+            "product_id": "1",
+            "customer_address": "abc"
+        },
+        "5XVSN3X": {
+            "id": "5XVSN3X",
+            "customer_id": "4",
+            "product_id": "1",
+            "customer_address": "abc"
+        },
+        "RKD4QNT": {
+            "id": "RKD4QNT",
+            "customer_id": "5",
+            "product_id": "1",
+            "customer_address": "012 main St"
+        },
+        "BT8JQR7": {
+            "id": "BT8JQR7",
+            "customer_id": "1",
+            "product_id": "1",
+            "customer_address": "01 Main St"
+        }
     }
 }
