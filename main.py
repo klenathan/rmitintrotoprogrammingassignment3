@@ -1,23 +1,14 @@
 import json
-import os
-import platform
 from book import *
 from basic_features import *
 
-with open('data.json') as json_file:
-    json_data = json.load(json_file)
-    product_field = json_data['product']
+def open_file():
+    with open('data.json') as json_file:
+        json_data = json.load(json_file)
+        product_field = json_data['product']
+        return json_data, product_field
 
 
-def cls(): 
-    if platform.system() == 'Windows':
-        return os.system('cls')
-    elif platform.system() == 'Darwin':
-        return os.system('clear')
-    elif platform.system() == 'Linux':
-        return os.system('clear')
-    else:
-        return print("The program can only clear on Window, MacOS and Linux")
 # Main menu
 def main_menu():
     options = {
@@ -28,123 +19,69 @@ def main_menu():
         "5": "To-do: Place Order",
         "\n0": "End program"
     }
-    cls()
-    for opt in options:
-        print(f'{opt}: {options[opt]}')
 
-    user_option = input("Please choose: ")
-
-    if user_option == "0":
-        exit()
-    elif user_option == "1":
-        list_all()
-    elif user_option == "2":
-        search_name(json_data)
-    elif user_option == "3":
-        search_id(json_data)
-    elif user_option == "4":
-        list_all_customer()
-    elif int(user_option) > 5:
-        cls()
-        print("Feature not yet implemented")
-        print('\n0: Exit')
-        go_back_to_main()
-    else:
-        cls()
-        print("Unknown Error")
-        print("Feature not yet implemented")
-        print('\n0: Exit')
-        go_back_to_main()
+    while True:
+        print('\n')
+        for opt in options:
+            print(f'{opt}: {options[opt]}')
+        user_option = input("Please choose a valid option as above: ")
+        json_data, product_field = open_file()
+        if user_option not in ['0', '1', '2', '3', '4', '5']:
+            print('Invalid command! Please try again!')
+            continue
+        if user_option == "0":
+            exit(0)
+        elif user_option == "1":
+            list_all(product_field)
+        elif user_option == "2":
+            search_name(json_data, product_field)
+        elif user_option == "3":
+            get_specific_item(product_field)  
 
 # Menu components
 
 
-def list_all(data):
-    '''
-    This function render product information
-    '''
-    cls()
-    for item in data['product']:
-        print(f'{item}: {data["product"][item]["title"]}')
-    print('\n0: Exit')
-    user_option = input("\nPlease choose: ")
-    if user_option == "0":
-        main_menu()
-    else:
-        cls()
-        for detail in data['product'][user_option]:
-            print(f'{detail}: {data["product"][user_option][detail]}')
-        print('\n0: Go Back')
-        user_option_2 = input("\nPlease choose: ")
-        if user_option_2 == "0":
-            cls()
-            list_all()
-            user_option = input("\nPlease choose: ")
-            if user_option == 0:
-                print('ej')
-                main_menu()
-
-def search_name(data):
+def search_name(data, product_field):
     '''
     This function render search by name menu
     :param: dict: data from json file contain all infomation
     '''
-    searched_book_id = search_by_name(data)
-    cls()
+    book_name = input("Please enter the book title: ")
+    searched_book_id = search_by_name(data, book_name)
     if searched_book_id == None:
-        print('Book not found')
+        search_name(data, product_field)
     else:
-        for detail in data['product'][searched_book_id]:
-            print(f'{detail}: {data["product"][searched_book_id][detail]}')
-
-    print('\n0: Exit')
-    user_option = input("\nPlease choose: ")
-    if user_option == "0":
-        main_menu()
-
-def search_id(data):
-    '''
-    This function render search by id menu
-    :param: dict: data from json file contain all infomation
-    '''
-    searched_book_data = search_by_id(data)
-    cls()
-    if searched_book_data == None:
-        print('Book not found')
-    else:
-        for detail in searched_book_data:
-            print(f'{detail}: {searched_book_data[detail]}')
-
-    print('\n0: Exit')
-    user_option = input("\nPlease choose: ")
-    if user_option == "0":
-        main_menu()
+        print('\n')
+        for detail in product_field[searched_book_id]:
+            print(f'{detail}: {product_field[searched_book_id][detail]}')
 
 
-def list_all_customer(data):
+def list_all(product_field):
     '''
     This function render product information
     '''
-    cls()
-    for item in product_field:
-        print(f'{item}: {product_field[item]["title"]}')
-    print('\n0: Exit')
-    user_option = input("\nPlease choose: ")
+    print('\n')
+    try:
+        for item in product_field:
+            print(f'{item}: {product_field[item]["title"]}')
+   
+    except Exception as e:
+        print(e)
+
+
+def get_specific_item(product_field):
+    user_option = input("\nPlease choose a specific item or 0 to go back to main menu: ")
     if user_option == "0":
         main_menu()
-    else:
-        cls()
+    try:
+        print('\n')
         for detail in product_field[user_option]:
             print(f'{detail}: {product_field[user_option][detail]}')
-        print('\n0: Go Back')
-        user_option_2 = input("\nPlease choose: ")
-        if user_option_2 == "0":
-            cls()
-            list_all()
-            user_option = input("\nPlease choose: ")
-            if user_option == 0:
-                print('ej')
-                main_menu()
+        list_all(product_field)
+    except Exception as e:
+        print(f"The item {e} does not exist! Please try a valid number!")
+        get_specific_item(product_field)
+
 
 def go_back_to_main():
     user_option = input("\nPlease choose: ")
@@ -155,5 +92,5 @@ def go_back_to_main():
 if __name__ == '__main__':
     try:
         main_menu()
-    except KeyboardInterrupt:
-        cls()
+    except Exception as e:
+        print(e)
