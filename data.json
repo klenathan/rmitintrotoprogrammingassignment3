@@ -70,13 +70,6 @@
             "email": "S3891890@gmail.com",
             "phone_num": "123345567",
             "address": "012 main St"
-        },
-        "6": {
-            "id": "6",
-            "name": "abc",
-            "email": "we",
-            "phone_num": "12",
-            "address": "01"
         }
     },
     "order": {
@@ -85,6 +78,12 @@
             "customer_id": "7",
             "product_id": "1",
             "customer_address": "abc"
+        }
+    },
+    "return": {
+        "order_id": {
+            "customer name": "customer_name",
+            "reason of return": "reason"
         }
     }
 }

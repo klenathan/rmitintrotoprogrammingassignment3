@@ -30,10 +30,9 @@ Check-list:
 def user_option():
     option = input('''
 Choose one of these options:
-0. Exit
-1. List all items 
-2. Search item by name 
-3. Search item by item id 
+0. Exit                     1. List all items
+2. Search item by name      3. Search item by item id 
+4. Return shipment
 Your option:  ''')
     if(option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']):
         print('Wrong input, please try again!')
@@ -65,7 +64,7 @@ if __name__ == '__main__':
                 search_item(json_data)
             elif user == 4:
                 cls()
-                pass
+                return_shipment(json_data)
             elif user == 5:
                 cls()
                 pass

@@ -29,7 +29,7 @@ def list_all(json_data):
     try:
         for item in json_data['product']:
             print(f'{item}. {json_data["product"][item]["title"]}')
-        search_item(json_data['product'], json_data)
+        search_item(json_data)
     except Exception as e:
         print(e)
 
@@ -200,3 +200,29 @@ def random_order_id(json_data):
                 return random_order_id(json_data)
             else:
                 return random_id
+
+def return_shipment(json_data):
+    cls()
+    while True:
+        order_id = input("Please input your order id: ")
+        for i in json_data['order']:
+            if i == order_id:
+                customer_name = input("What is the buyer's name? ")
+                return_reason = input("What is your reason of return? ")
+                json_data['return'][order_id] = {
+                    "customer name": customer_name,
+                    "reason of return": return_reason
+                }
+                print('\nSorry for your inconvinient.\nWe will process your request as soon as possible')
+                input("Press any key to bo gack: ")
+                cls()
+                break
+            else:
+                print('Order does not exist')
+                print("\n 0. Exit")
+                print("\n 1. Try again")
+                if input("Try again? ") == "1":
+                    return_shipment(json_data)
+                    break
+                cls()
+        break
