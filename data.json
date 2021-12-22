@@ -2,8 +2,8 @@
     "product": {
         "1": {
             "title": "Product one",
-            "quantity": 9,
-            "description": "hello",
+            "quantity": 8,
+            "description": "Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.",
             "price": 10,
             "author": "Someone"
         },
@@ -70,6 +70,13 @@
             "email": "S3891890@gmail.com",
             "phone_num": "123345567",
             "address": "012 main St"
+        },
+        "6": {
+            "id": "6",
+            "name": "qwe",
+            "email": "qwe",
+            "phone_num": "qwe",
+            "address": "qew"
         }
     },
     "order": {
@@ -78,6 +85,12 @@
             "customer_id": "7",
             "product_id": "1",
             "customer_address": "abc"
+        },
+        "D13W6TI": {
+            "id": "D13W6TI",
+            "customer_id": "6",
+            "product_id": "1",
+            "customer_address": "qew"
         }
     },
     "return": {

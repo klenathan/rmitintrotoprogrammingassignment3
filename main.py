@@ -1,6 +1,7 @@
-from data import *
 import json
 
+from data import list_all, search_item, return_shipment
+from cls import cls
 
 # open file json
 def open_file():
