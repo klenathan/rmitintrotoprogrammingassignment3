@@ -2,6 +2,7 @@ import json
 import string
 import random
 from cls import cls
+from styling import style
 
 
 def handle_order(product_id, json_data):
@@ -16,58 +17,34 @@ def handle_order(product_id, json_data):
         dict: json_data: dictionary contain all data from database
     '''
     customer_field = json_data['customer']
-    # customer_field's key is sorted ascendingly
+
+    # customer_field's key is sorted ascendingly, 
+    # max id would be the last value from the json_data['customer'] list
     max_id = int(list(customer_field)[-1])
-    customer_id = str(max_id + 1)
-    customer_address = ''
+    customer_id = str(max_id + 1) # Create new customer_id by add 1 to max id
     order_id = random_order_id(json_data)
+    order_quantity = input("How many would you like to get? ")
+    updated_quantity = json_data['product'][product_id]['quantity'] - int(order_quantity)
 
-    print("\n0. Not yet")
-    print("1. Yes, and I have customer ID")
-    purchase_history = input("Have you purchase from us ever before? ")
-    if purchase_history == "1":
-        try:    
-            customer_id = input("Please submit your customer ID: ")
-            customer_name = customer_field[customer_id]['name']
-            customer_email = customer_field[customer_id]['email']
-            customer_phone = customer_field[customer_id]['phone_num']
-            customer_address = customer_field[customer_id]['address']
-        except Exception as e:
-            print(f'Customer id {e} does not exist, press anykey to try again')
-            handle_order(product_id, json_data)
-    elif purchase_history == "0":
-        print("\n")
-        customer_name = input("Name: ")
-        customer_email = input("Email adress: ")
-        customer_phone = input("Phone number: ")
-        customer_address = input("Shipping address: ")
+    # Check if product's quantity is enough
+    if updated_quantity < 0:
+        print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
-        handle_order(product_id, json_data)
+        # Generate customer and order dictionary
+        customer_dict, order_dict = handle_customer_info(json_data, product_id, order_id, order_quantity)
+        # Review
+        rating_dict = handle_review(json_data, product_id)
+        # Write data to database
+        json_data['customer'][customer_id] = customer_dict
+        json_data['order'][order_id] = order_dict
+        json_data['product'][product_id]['quantity'] = updated_quantity
+        json_data['product'][product_id]['rating'] = rating_dict
+        json_file = open('data.json', 'w')
 
-    cls()
+        json.dump(json_data, json_file, indent=4)
 
-    customer_dict = {
-        "id": customer_id,
-        "name": customer_name,
-        "email": customer_email,
-        "phone_num": customer_phone,
-        "address": customer_address
-    }
-    order_dict = {
-        "id": order_id,
-        "customer_id": customer_id,
-        "product_id": product_id,
-        "customer_address": customer_address
-    }
-    json_data['product'][product_id]['quantity'] -= 1
-    json_data['customer'][customer_id] = customer_dict
-    json_data['order'][order_id] = order_dict
-    json_file = open('data.json', 'w')
-
-    json.dump(json_data, json_file, indent=4)
-
-    print(
-        f"\nYour order number is: \033[1m{order_id}\033[0m \nPlease note for later use")
+        print(
+            f"\nYour order number is: {style.BOLD}{order_id}{style.END}\nPlease note for later use")
 
 
 def random_order_id(json_data):
@@ -79,10 +56,12 @@ def random_order_id(json_data):
         str: product_id: product id that need to be handle
         dict: json_data: dictionary contain all data from database
     :return:
-        str: random_id: 7 characters order id 
+        str: random_id: 7 characters id 
     '''
     random_id = ''.join(random.choices(
-        string.ascii_uppercase + string.digits, k=7)) # Modify k for number of random_id character 
+        string.ascii_uppercase + string.digits, k=7)
+    ) # Modify 'k' for number of random_id character 
+
     if json_data['order'] == {}:
         return random_id
     else:
@@ -91,3 +70,79 @@ def random_order_id(json_data):
                 return random_order_id(json_data)
             else:
                 return random_id
+
+def handle_customer_info(json_data, product_id, order_id, order_quantity):
+    '''
+    The function generate customer information dictionary and new order dictinary
+    :param:
+        dict: json_data: dictionary contain all information
+        str: product_id: product id of product being product
+        str: order_id: order id that need to be generate
+        str: order_quantity: number of product bring bought
+    :return:
+        dict: customer_dict: new customer dictionary
+        dict: order_dict: new order dictionary
+    '''
+    customer_field = json_data['customer']
+    # Ask for customer ID or submit information 
+    print("\n0. Not yet")
+    print("1. Yes, and I have customer ID")
+    purchase_history = input("Have you purchase from us ever before? ")
+    if purchase_history == "1":
+        try:    
+            customer_id = input("Please submit your customer ID: ")
+            customer_name = customer_field[customer_id]['name']
+            customer_email = customer_field[customer_id]['email']
+            customer_phone = customer_field[customer_id]['phone_num']
+            customer_address = customer_field[customer_id]['address']
+
+        except Exception as e:
+            print(f'Customer id {e} does not exist, press anykey to try again')
+            handle_order(product_id, json_data)
+    elif purchase_history == "0":
+        print("\n")
+        customer_name = input("Name: ")
+        customer_email = input("Email adress: ")
+        customer_phone = input("Phone number: ")
+        customer_address = input("Shipping address: ")
+    else:
+        handle_order(product_id, json_data)
+    customer_dict = {
+        "id": customer_id,
+        "name": customer_name,
+        "email": customer_email,
+        "phone_num": customer_phone,
+        "address": customer_address
+    }
+    order_dict = {
+        "id": order_id,
+        "customer_id": customer_id,
+        "product_id": product_id,
+        "buy_quantity": int(order_quantity),
+        "customer_address": customer_address
+    }
+    print(f'\nTotal cost is: {int(order_quantity) * int(json_data["product"][product_id]["price"])}$')
+
+    return customer_dict, order_dict
+
+def handle_review(json_data, product_id):
+    total_point = json_data["product"][product_id]["rating"]["total_point"]
+    num_of_review = json_data["product"][product_id]["rating"]["num_of_review"]
+    
+    user_review = int(input("\nHow do you rate the product from 1 to 5? "))
+    if user_review > 5:
+        user_review == 5
+    elif user_review < 1:
+        user_review == 1
+    
+    total_point += user_review
+    num_of_review += 1
+    average_point = total_point/num_of_review
+
+    rating_dict = {
+        "total_point": total_point,
+        "num_of_review": num_of_review,
+        "average": average_point
+    }
+
+    return rating_dict

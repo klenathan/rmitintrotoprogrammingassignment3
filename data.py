@@ -5,6 +5,7 @@ from handle_order import handle_order
 from cls import cls
 from styling import style
 
+
 def list_all(json_data):
     '''
     The function print all products information from database.
@@ -13,15 +14,14 @@ def list_all(json_data):
     '''
     cls()
     try:
-        table = PrettyTable(['ID', 'Book Title', 'Author', 'Description', 'Quantity', 'Price'])
+        table = PrettyTable(
+            ['ID', 'Book Title', 'Author', 'Quantity', 'Price'])
         table.align = 'l'
         for item in json_data['product']:
-            #print(f'{item}. {json_data["product"][item]["title"]}')
             table.add_row([
-                item, 
+                item,
                 json_data['product'][item]['title'],
                 json_data['product'][item]['author'],
-                json_data['product'][item]['description'],
                 json_data['product'][item]['quantity'],
                 json_data['product'][item]['price'], ])
         print(table)
@@ -47,7 +47,12 @@ def get_item(json_data):
             cls()
             print('\n')
             for detail in json_data['product'][user_option]:
-                print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
+                if detail == "rating":
+                    print(
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]}')
+                else:
+                    print(
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
 
             print("\n0. Exit to main menu")
             print("1. Purchase")
@@ -98,8 +103,12 @@ def search_by_name(json_data):
                     if title == book_name:
                         product_exist += 1
                         for detail in json_data['product'][id]:
-                            print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]}')
-
+                            if detail == "rating":
+                                print(
+                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]["average"]}')
+                            else:
+                                print(
+                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]}')
                         print("\n0. Exit to main menu")
                         print("1. Purchase")
                         product_option = input(
@@ -143,7 +152,12 @@ def search_by_id(json_data):
             cls()
             print('\n')
             for detail in json_data['product'][user_option]:
-                print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
+                if detail == "rating":
+                    print(
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]}')
+                else:
+                    print(
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
 
             print("\n0. Exit to main menu")
             print("1. Purchase")
@@ -190,9 +204,10 @@ def return_shipment(json_data):
                 }
                 json_file = open('data.json', 'w')
                 json.dump(json_data, json_file, indent=4)
-                print('\nSorry for your inconvinient.\nWe will process your request as soon as possible')
+                print(
+                    '\nSorry for your inconvinient.\nWe will process your request as soon as possible')
                 input("Press any key to bo gack: ")
-                
+
                 cls()
                 break
         if order_exist == 0:

@@ -2,38 +2,183 @@
     "product": {
         "1": {
             "title": "Product one",
-            "quantity": 5,
-            "description": "Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.",
+            "quantity": 97,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "price": 10,
-            "author": "Someone"
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
         },
         "2": {
             "title": "Product two",
             "quantity": 19,
             "description": "hello",
             "price": 10,
-            "author": "Someone"
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
         },
         "3": {
             "title": "Product three",
             "quantity": 40,
             "description": "hello",
             "price": 10,
-            "author": "Someone"
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
         },
         "4": {
             "title": "Product four",
             "quantity": 12,
             "description": "hello",
             "price": 10,
-            "author": "Someone"
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
         },
         "5": {
             "title": "Product five",
-            "quantity": 8,
+            "quantity": 123,
             "description": "hello",
             "price": 10,
-            "author": "Someone"
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "6": {
+            "title": "Product one",
+            "quantity": 97,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "7": {
+            "title": "Product two",
+            "quantity": 19,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "8": {
+            "title": "Product three",
+            "quantity": 40,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "9": {
+            "title": "Product four",
+            "quantity": 12,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "10": {
+            "title": "Product five",
+            "quantity": 123,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "11": {
+            "title": "Product one",
+            "quantity": 97,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "12": {
+            "title": "Product two",
+            "quantity": 19,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "13": {
+            "title": "Product three",
+            "quantity": 40,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "14": {
+            "title": "Product four",
+            "quantity": 12,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
+        },
+        "15": {
+            "title": "Product five",
+            "quantity": 123,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": "No Review"
+            }
         }
     },
     "customer": {
@@ -66,70 +211,25 @@
             "address": "abc"
         },
         "5": {
-            "id": "5",
-            "name": "Nam Thai Tran",
-            "email": "S3891890@gmail.com",
-            "phone_num": "123345567",
-            "address": "012 main St"
-        },
-        "6": {
-            "id": "6",
-            "name": "qwe",
-            "email": "qwe",
-            "phone_num": "qwe",
-            "address": "qew"
+            "id": "1",
+            "name": "Person 1",
+            "email": "person1@mail.com",
+            "phone_num": "0123456789",
+            "address": "01 Main St"
         }
     },
     "order": {
         "ZQEPE21": {
             "id": "ZQEPE21",
-            "customer_id": "7",
+            "customer_id": "2",
             "product_id": "1",
             "customer_address": "abc"
-        },
-        "D13W6TI": {
-            "id": "D13W6TI",
-            "customer_id": "6",
-            "product_id": "1",
-            "customer_address": "qew"
-        },
-        "G71NTLP": {
-            "id": "G71NTLP",
-            "customer_id": "2",
-            "product_id": "1",
-            "customer_address": "01 Main St"
-        },
-        "M84M5QP": {
-            "id": "M84M5QP",
-            "customer_id": "2",
-            "product_id": "1",
-            "customer_address": "01 Main St"
-        },
-        "U70RCR9": {
-            "id": "U70RCR9",
-            "customer_id": "3",
-            "product_id": "1",
-            "customer_address": "01 Main St"
-        },
-        "CNLIB8U": {
-            "id": "CNLIB8U",
-            "customer_id": "3",
-            "product_id": "2",
-            "customer_address": "01 Main St"
         }
     },
     "return": {
         "order_id": {
             "customer name": "customer_name",
             "reason of return": "reason"
-        },
-        "ZQEPE21": {
-            "customer name": "qwe",
-            "reason of return": "qwe"
-        },
-        "D13W6TI": {
-            "customer name": "as",
-            "reason of return": "a"
         }
     }
 }

@@ -16,16 +16,19 @@ def open_file():
 
 """
 Check-list:
-0. Exit
-1. List all items #Done -Thu 
-2. Search item by name #Done - Thu
-3. Search item by item id #Done - Thu
-4. List all information of a specific customer
-5. Placing orders #Done? Thai To-do: implement 4 to 5
-6. Shipping management
-7. Payment management
-8. Discount
-9. Return shipment -> should have ?
+0.  Exit
+1.  List all items #Done -Thu 
+2.  Search item by name #Done - Thu
+3.  Search item by item id #Done - Thu
+4.  List all information of a specific customer ???
+5.  Placing orders | To-do: a lot ...| #Done? Thai
+
+6.  Shipping management 
+7.  Payment management ## In Progress ###
+
+8.  Discount
+9.  Return shipment # Done - Thai
+10. Product review # Done - Thai
 """
 
 def user_option():
@@ -33,7 +36,7 @@ def user_option():
 Choose one of these options:
 0. Exit                     1. List all items
 2. Search item by name      3. Search item by item id 
-4. Return shipment
+4. Return shipment  
 Your option:  ''')
     if(option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']):
         cls()
