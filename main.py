@@ -1,6 +1,6 @@
 import json
 
-from data import list_all, search_item, return_shipment
+from data import list_all, search_by_id, return_shipment, search_by_name
 from cls import cls
 
 # open file json
@@ -36,6 +36,7 @@ Choose one of these options:
 4. Return shipment
 Your option:  ''')
     if(option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']):
+        cls()
         print('Wrong input, please try again!')
         option = '-1'
     return int(option)
@@ -62,7 +63,7 @@ if __name__ == '__main__':
             # Search item by ID
             elif user == 3:
                 cls()
-                search_item(json_data)
+                search_by_id(json_data)
             elif user == 4:
                 cls()
                 return_shipment(json_data)

@@ -3,6 +3,7 @@ from prettytable import PrettyTable
 
 from handle_order import handle_order
 from cls import cls
+from styling import style
 
 def list_all(json_data):
     '''
@@ -24,14 +25,14 @@ def list_all(json_data):
                 json_data['product'][item]['quantity'],
                 json_data['product'][item]['price'], ])
         print(table)
-        search_item(json_data)
+        get_item(json_data)
     except Exception as e:
         print(e)
 
 
-def search_item(json_data):
+def get_item(json_data):
     '''
-    The function print out product's detailed description based ont its id
+    The function print out product's detailed description based on user's selection
 
     :param:
         dict: json_data: dictionary contain all data from database
@@ -45,9 +46,8 @@ def search_item(json_data):
         try:
             cls()
             print('\n')
-
             for detail in json_data['product'][user_option]:
-                print(f'{detail:15}: {json_data["product"][user_option][detail]}')
+                print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
 
             print("\n0. Exit to main menu")
             print("1. Purchase")
@@ -69,13 +69,14 @@ def search_item(json_data):
             else:
                 input('Invalid option, press any key to try again')
                 cls()
-                search_item(json_data)
+                get_item(json_data)
 
         except Exception as e:
             print(e)
             print(
                 f"The item {str(e)} does not exist! Please try a valid number!")
-            search_item(json_data)
+            get_item(json_data)
+            break
 
 
 def search_by_name(json_data):
@@ -84,6 +85,7 @@ def search_by_name(json_data):
 
     :param: dict: json_data: dictionary contain all data from database
     '''
+    product_exist = 0
     while True:
         book_name = input(
             "\nPlease enter the book title or press 0 to return to the main menu: ")
@@ -94,9 +96,9 @@ def search_by_name(json_data):
                 for id in json_data['product']:
                     title = json_data['product'][id]["title"]
                     if title == book_name:
+                        product_exist += 1
                         for detail in json_data['product'][id]:
-                            print(
-                                f'{detail:10}: {json_data["product"][id][detail]}')
+                            print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]}')
 
                         print("\n0. Exit to main menu")
                         print("1. Purchase")
@@ -104,23 +106,72 @@ def search_by_name(json_data):
                             "Do you want to purchase this item? ")
                         if product_option == "1":
                             handle_order(id, json_data)
-                            exit_option = input(
+                            input(
                                 "\nPress any key to go back to main menu: ")
-                            if exit_option:
-                                cls()
-                                break
-                            else:
-                                break
+                            break
                         elif product_option == "0":
                             cls()
-                            list_all(json_data)
+                            break
                         else:
                             input('heh?')
                             print('Invalid option')
+                if product_exist == 0:
+                    print('Please try again: ')
+                    search_by_name(json_data)
+                cls()
+                break
 
             except Exception as e:
                 print(
                     f"The item {e} does not exist! Please try the valid name!")
+
+
+def search_by_id(json_data):
+    '''
+    The function print out product's detailed description based on user's selection
+
+    :param:
+        dict: json_data: dictionary contain all data from database
+    '''
+    while True:
+        user_option = input(
+            "\nPlease enter the product ID to get all information of the item or press 0 to return to the main menu: ")
+        if user_option == "0":
+            cls()
+            break
+        try:
+            cls()
+            print('\n')
+            for detail in json_data['product'][user_option]:
+                print( f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
+
+            print("\n0. Exit to main menu")
+            print("1. Purchase")
+            product_option = input("Do you want to purchase this item? ")
+
+            if product_option == "1":
+                handle_order(user_option, json_data)
+                exit_option = input(
+                    "\nPress any key to go back to main menu: ")
+                if exit_option:
+                    cls()
+                    break
+                else:
+                    break
+            elif product_option == "0":
+                cls()
+                break
+            else:
+                input('Invalid option, press any key to try again')
+                cls()
+                search_by_id(json_data)
+
+        except Exception as e:
+            print(e)
+            print(
+                f"The item {str(e)} does not exist! Please try a valid number!")
+            search_by_id(json_data)
+            break
 
 
 def return_shipment(json_data):
