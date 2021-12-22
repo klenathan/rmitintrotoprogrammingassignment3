@@ -124,27 +124,32 @@ def search_by_name(json_data):
 
 
 def return_shipment(json_data):
+    order_exist = 0
     cls()
     while True:
         order_id = input("Please input your order id: ")
         for i in json_data['order']:
             if i == order_id:
+                order_exist += 1
                 customer_name = input("What is the buyer's name? ")
                 return_reason = input("What is your reason of return? ")
                 json_data['return'][order_id] = {
                     "customer name": customer_name,
                     "reason of return": return_reason
                 }
+                json_file = open('data.json', 'w')
+                json.dump(json_data, json_file, indent=4)
                 print('\nSorry for your inconvinient.\nWe will process your request as soon as possible')
                 input("Press any key to bo gack: ")
+                
                 cls()
                 break
-            else:
-                print('Order does not exist')
-                print("\n 0. Exit")
-                print("\n 1. Try again")
-                if input("Try again? ") == "1":
-                    return_shipment(json_data)
-                    break
-                cls()
+        if order_exist == 0:
+            print('Order does not exist')
+            print("\n 0. Exit")
+            print("1. Try again")
+            if input("Try again? ") == "1":
+                return_shipment(json_data)
+                break
+        cls()
         break
