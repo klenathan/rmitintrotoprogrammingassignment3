@@ -16,12 +16,7 @@ def handle_order(product_id, json_data):
         str: product_id: product id that need to be handle
         dict: json_data: dictionary contain all data from database
     '''
-    customer_field = json_data['customer']
 
-    # customer_field's key is sorted ascendingly, 
-    # max id would be the last value from the json_data['customer'] list
-    max_id = int(list(customer_field)[-1])
-    customer_id = str(max_id + 1) # Create new customer_id by add 1 to max id
     order_id = random_order_id(json_data)
     order_quantity = input("How many would you like to get? ")
     updated_quantity = json_data['product'][product_id]['quantity'] - int(order_quantity)
@@ -31,7 +26,7 @@ def handle_order(product_id, json_data):
         print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
         # Generate customer and order dictionary
-        customer_dict, order_dict = handle_customer_info(json_data, product_id, order_id, order_quantity)
+        customer_dict, order_dict, customer_id = handle_customer_info(json_data, product_id, order_id, order_quantity)
         # Review
         rating_dict = handle_review(json_data, product_id)
         # Write data to database
@@ -95,11 +90,14 @@ def handle_customer_info(json_data, product_id, order_id, order_quantity):
             customer_email = customer_field[customer_id]['email']
             customer_phone = customer_field[customer_id]['phone_num']
             customer_address = customer_field[customer_id]['address']
-
         except Exception as e:
             print(f'Customer id {e} does not exist, press anykey to try again')
             handle_order(product_id, json_data)
     elif purchase_history == "0":
+        # customer_field's key is sorted ascendingly, 
+        # max id would be the last value from the json_data['customer'] list
+        max_id = int(list(customer_field)[-1])
+        customer_id = str(max_id + 1) # Create new customer_id by add 1 to max id
         print("\n")
         customer_name = input("Name: ")
         customer_email = input("Email adress: ")
@@ -121,9 +119,12 @@ def handle_customer_info(json_data, product_id, order_id, order_quantity):
         "buy_quantity": int(order_quantity),
         "customer_address": customer_address
     }
-    print(f'\nTotal cost is: {int(order_quantity) * int(json_data["product"][product_id]["price"])}$')
+    total_price = int(order_quantity) * int(json_data["product"][product_id]["price"])
+    #final_price = total_price * (100 - discount(json_data))
+    #Display price
+    print(f'\nTotal cost is: {total_price}$')
 
-    return customer_dict, order_dict
+    return customer_dict, order_dict, customer_id
 
 def handle_review(json_data, product_id):
     total_point = json_data["product"][product_id]["rating"]["total_point"]
@@ -146,3 +147,23 @@ def handle_review(json_data, product_id):
     }
 
     return rating_dict
+
+def discount(json_data, product_id): ############ TO DO
+    customer_id_input = input('Please enter your customer id: ')
+    total_items = 0
+    total_cost = 0
+    for order_id in json_data['order']:
+        customer_id = json_data['order'][order_id]['customer_id']
+        if customer_id_input == customer_id:
+            total_items = int(json_data['order'][order_id]['quantity'])
+            total_cost = total_items * json_data["product"][product_id]
+
+    if total_items >= 10:
+        discount = 10
+    elif total_items >= 5:
+        discount = 5
+    elif total_items >= 3:
+        discount = 3
+    total_cost = total_cost * (100-discount)/100    
+
+    print(f"You've got {discount}% discount! Your total cost is {total_cost}!")

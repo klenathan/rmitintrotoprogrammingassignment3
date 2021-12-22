@@ -23,10 +23,9 @@ Check-list:
 4.  List all information of a specific customer ???
 5.  Placing orders | To-do: a lot ...| #Done? Thai
 
-6.  Shipping management 
 7.  Payment management ## In Progress ###
 
-8.  Discount
+8.  Discount # Done - Thu
 9.  Return shipment # Done - Thai
 10. Product review # Done - Thai
 """

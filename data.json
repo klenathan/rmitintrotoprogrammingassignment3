@@ -2,14 +2,14 @@
     "product": {
         "1": {
             "title": "Product one",
-            "quantity": 97,
+            "quantity": 94,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "price": 10,
             "author": "Someone",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": "No Review"
+                "total_point": 13,
+                "num_of_review": 3,
+                "average": 4.333333333333333
             }
         },
         "2": {
@@ -202,20 +202,6 @@
             "email": "person3@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St"
-        },
-        "4": {
-            "id": "4",
-            "name": "123",
-            "email": "123",
-            "phone_num": "123",
-            "address": "abc"
-        },
-        "5": {
-            "id": "1",
-            "name": "Person 1",
-            "email": "person1@mail.com",
-            "phone_num": "0123456789",
-            "address": "01 Main St"
         }
     },
     "order": {
@@ -224,6 +210,13 @@
             "customer_id": "2",
             "product_id": "1",
             "customer_address": "abc"
+        },
+        "U6P8X8M": {
+            "id": "U6P8X8M",
+            "customer_id": "3",
+            "product_id": "1",
+            "buy_quantity": 1,
+            "customer_address": "01 Main St"
         }
     },
     "return": {

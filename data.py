@@ -49,7 +49,7 @@ def get_item(json_data):
             for detail in json_data['product'][user_option]:
                 if detail == "rating":
                     print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]}')
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
                 else:
                     print(
                         f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
@@ -60,13 +60,9 @@ def get_item(json_data):
 
             if product_option == "1":
                 handle_order(user_option, json_data)
-                exit_option = input(
-                    "\nPress any key to go back to main menu: ")
-                if exit_option:
-                    cls()
-                    break
-                else:
-                    break
+                input("\nPress any key to go back to main menu: ")
+                cls()
+                break
             elif product_option == "0":
                 cls()
                 list_all(json_data)
@@ -105,7 +101,7 @@ def search_by_name(json_data):
                         for detail in json_data['product'][id]:
                             if detail == "rating":
                                 print(
-                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]["average"]}')
+                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]["average"]:.2f}')
                             else:
                                 print(
                                     f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]}')
@@ -154,7 +150,7 @@ def search_by_id(json_data):
             for detail in json_data['product'][user_option]:
                 if detail == "rating":
                     print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]}')
+                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
                 else:
                     print(
                         f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
