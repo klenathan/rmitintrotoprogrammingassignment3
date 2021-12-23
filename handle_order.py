@@ -1,10 +1,9 @@
 import json
 import string
 import random
-from cls import cls
 from styling import style
 
-from additional_features import handle_review, discount
+from additional_features import discount
 
 
 
@@ -29,19 +28,15 @@ def handle_order(product_id, json_data):
         print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
         # Generate customer and order dictionary
-        customer_dict, order_dict, customer_id = handle_customer_info(json_data, product_id, order_quantity)
-        # Review
-        # rating_dict = handle_review(json_data, product_id)
+        customer_dict, order_dict, customer_id = handle_data(json_data, product_id, order_quantity)
         # Write data to database
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
         json_data['product'][product_id]['quantity'] = updated_quantity
         json_file = open('data.json', 'w')
-
         json.dump(json_data, json_file, indent=4)
 
-        print(
-            f"\nYour order number is: {style.BOLD}{order_id}{style.END}\nPlease note for later use")
+        print(f"\nYour order number is: {style.BOLD}{order_id}{style.END}\nPlease note for later use")
 
 
 def random_order_id(json_data):
@@ -50,14 +45,11 @@ def random_order_id(json_data):
     Order ID generated is check to make sure there is no duplicated ID.
 
     :param: 
-        str: product_id: product id that need to be handle
         dict: json_data: dictionary contain all data from database
     :return:
         str: random_id: 7 characters id 
     '''
-    random_id = ''.join(random.choices(
-        string.ascii_uppercase + string.digits, k=7)
-    ) # Modify 'k' for number of random_id character 
+    random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7)) # Modify 'k' for number of random_id character 
 
     if json_data['order'] == {}:
         return random_id
@@ -68,7 +60,7 @@ def random_order_id(json_data):
             else:
                 return random_id
 
-def handle_customer_info(json_data, product_id, order_quantity):
+def handle_data(json_data, product_id, order_quantity):
     '''
     The function generate customer information dictionary and new order dictinary
     :param:
@@ -121,7 +113,8 @@ def handle_customer_info(json_data, product_id, order_quantity):
         "product_id": product_id,
         "quantity": int(order_quantity),
         "total_cost": final_price,
-        "customer_address": customer_address
+        "customer_address": customer_address,
+        "reviewed": "False"
     }
     
     #Display price

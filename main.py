@@ -8,12 +8,7 @@ from cls import cls
 def open_file():
     with open('data.json', 'r+') as json_file:
         json_data = json.load(json_file)
-        product_field = json_data['product']
-        customer_field = json_data['customer']
-        return json_data, product_field, customer_field, json_file
-
-
-# User option
+        return json_data
 
 """
 Check-list:
@@ -31,7 +26,7 @@ Check-list:
 10. Product review # Done - Thai
 11. Used product 70% price 
 """
-
+# User option
 def user_option():
     option = input('''
 Choose one of these options:
@@ -50,7 +45,7 @@ if __name__ == '__main__':
     try:
         while True:
             user = user_option()
-            json_data, product_field, customer_field, json_file = open_file()
+            json_data = open_file()
             # Exit program
             if user == 0:
                 cls()

@@ -1,4 +1,3 @@
-import json
 from prettytable import PrettyTable
 
 from handle_order import handle_order
@@ -16,7 +15,7 @@ def list_all(json_data):
     while True:
         try:
             table = PrettyTable(
-                ['ID', 'Book Title', 'Author', 'Quantity', 'Price'])
+                ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating"])
             table.align = 'l'
             for item in json_data['product']:
                 table.add_row([
@@ -25,6 +24,7 @@ def list_all(json_data):
                     json_data['product'][item]['author'],
                     json_data['product'][item]['quantity'],
                     json_data['product'][item]['price'], 
+                    f'{json_data["product"][item]["rating"]["average"]:.2f}'
                 ])
             print(table)
             if search_item(json_data) == "0":
@@ -46,29 +46,30 @@ def search_item(json_data):
         if user_option == "0":
             cls()
             return "0"
-        try:
-            product_option = query_detail(json_data, user_option)
+        else:
+            try:
+                product_option = query_detail(json_data, user_option)
 
-            if product_option == "1":
-                handle_order(user_option, json_data)
-                input("\nPress any key to go back to main menu: ")
-                cls()
-                break
-            elif product_option == "0":
-                cls()
-                break
-            else:
-                input('Invalid option, press any key to try again')
-                cls()
+                if product_option == "1":
+                    handle_order(user_option, json_data)
+                    input("\nPress any key to go back to main menu: ")
+                    cls()
+                    break
+                elif product_option == "0":
+                    cls()
+                    break
+                else:
+                    input('Invalid option, press any key to try again')
+                    cls()
+                    search_item(json_data)
+                    break
+
+            except Exception as e:
+                print(e)
+                print(
+                    f"The item {str(e)} does not exist! Please try a valid number!")
                 search_item(json_data)
                 break
-
-        except Exception as e:
-            print(e)
-            print(
-                f"The item {str(e)} does not exist! Please try a valid number!")
-            search_item(json_data)
-            break
 
 def search_by_name(json_data):
     '''

@@ -7,9 +7,9 @@
             "price": 10,
             "author": "Someone",
             "rating": {
-                "total_point": 48,
-                "num_of_review": 12,
-                "average": 4.0
+                "total_point": 63,
+                "num_of_review": 15,
+                "average": 4.2
             }
         },
         "2": {
@@ -175,9 +175,69 @@
             "price": 10,
             "author": "Someone",
             "rating": {
-                "total_point": 5,
-                "num_of_review": 1,
-                "average": 5.0
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
+            }
+        },
+        "16": {
+            "title": "Product five",
+            "quantity": 111,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
+            }
+        },
+        "17": {
+            "title": "Product five",
+            "quantity": 111,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
+            }
+        },
+        "18": {
+            "title": "Product five",
+            "quantity": 111,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
+            }
+        },
+        "19": {
+            "title": "Product five",
+            "quantity": 111,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
+            }
+        },
+        "20": {
+            "title": "Product five",
+            "quantity": 111,
+            "description": "hello",
+            "price": 10,
+            "author": "Someone",
+            "rating": {
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         }
     },
@@ -209,26 +269,29 @@
             "customer_id": "2",
             "product_id": "1",
             "quantity": 10,
-            "customer_address": "abc"
+            "customer_address": "abc",
+            "reviewed": "False"
         },
         "U6P8X8M": {
             "customer_id": "3",
             "product_id": "1",
             "quantity": 1,
-            "customer_address": "01 Main St"
+            "customer_address": "01 Main St",
+            "reviewed": "False"
         },
         "8T09U3S": {
             "customer_id": "2",
             "product_id": "1",
             "quantity": 5,
             "total_cost": 45.0,
-            "customer_address": "01 Main St"
+            "customer_address": "01 Main St",
+            "reviewed": "True"
         }
     },
     "return": {
         "order_id": {
-            "customer name": "customer_name",
-            "reason of return": "reason"
+            "customer_name": "customer_name",
+            "reason_of_return": "reason"
         }
     }
 }
