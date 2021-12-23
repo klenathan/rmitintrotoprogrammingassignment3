@@ -4,6 +4,9 @@ import random
 from cls import cls
 from styling import style
 
+from additional_features import handle_review, discount
+
+
 
 def handle_order(product_id, json_data):
     '''
@@ -26,14 +29,13 @@ def handle_order(product_id, json_data):
         print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
         # Generate customer and order dictionary
-        customer_dict, order_dict, customer_id = handle_customer_info(json_data, product_id, order_id, order_quantity)
+        customer_dict, order_dict, customer_id = handle_customer_info(json_data, product_id, order_quantity)
         # Review
-        rating_dict = handle_review(json_data, product_id)
+        # rating_dict = handle_review(json_data, product_id)
         # Write data to database
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
         json_data['product'][product_id]['quantity'] = updated_quantity
-        json_data['product'][product_id]['rating'] = rating_dict
         json_file = open('data.json', 'w')
 
         json.dump(json_data, json_file, indent=4)
@@ -66,13 +68,12 @@ def random_order_id(json_data):
             else:
                 return random_id
 
-def handle_customer_info(json_data, product_id, order_id, order_quantity):
+def handle_customer_info(json_data, product_id, order_quantity):
     '''
     The function generate customer information dictionary and new order dictinary
     :param:
         dict: json_data: dictionary contain all information
         str: product_id: product id of product being product
-        str: order_id: order id that need to be generate
         str: order_quantity: number of product bring bought
     :return:
         dict: customer_dict: new customer dictionary
@@ -105,6 +106,9 @@ def handle_customer_info(json_data, product_id, order_id, order_quantity):
         customer_address = input("Shipping address: ")
     else:
         handle_order(product_id, json_data)
+    
+    total_price = int(order_quantity) * int(json_data["product"][product_id]["price"])
+    final_price = total_price * (100 - discount(json_data, customer_id)) * 0.01
     customer_dict = {
         "id": customer_id,
         "name": customer_name,
@@ -113,57 +117,16 @@ def handle_customer_info(json_data, product_id, order_id, order_quantity):
         "address": customer_address
     }
     order_dict = {
-        "id": order_id,
         "customer_id": customer_id,
         "product_id": product_id,
-        "buy_quantity": int(order_quantity),
+        "quantity": int(order_quantity),
+        "total_cost": final_price,
         "customer_address": customer_address
     }
-    total_price = int(order_quantity) * int(json_data["product"][product_id]["price"])
-    #final_price = total_price * (100 - discount(json_data))
+    
     #Display price
-    print(f'\nTotal cost is: {total_price}$')
+    print(f"You've got {discount(json_data, customer_id)}% discount!")
+    print(f'\n Your total cost is {final_price}$!')
 
     return customer_dict, order_dict, customer_id
 
-def handle_review(json_data, product_id):
-    total_point = json_data["product"][product_id]["rating"]["total_point"]
-    num_of_review = json_data["product"][product_id]["rating"]["num_of_review"]
-    
-    user_review = int(input("\nHow do you rate the product from 1 to 5? "))
-    if user_review > 5:
-        user_review == 5
-    elif user_review < 1:
-        user_review == 1
-    
-    total_point += user_review
-    num_of_review += 1
-    average_point = total_point/num_of_review
-
-    rating_dict = {
-        "total_point": total_point,
-        "num_of_review": num_of_review,
-        "average": average_point
-    }
-
-    return rating_dict
-
-def discount(json_data, product_id): ############ TO DO
-    customer_id_input = input('Please enter your customer id: ')
-    total_items = 0
-    total_cost = 0
-    for order_id in json_data['order']:
-        customer_id = json_data['order'][order_id]['customer_id']
-        if customer_id_input == customer_id:
-            total_items = int(json_data['order'][order_id]['quantity'])
-            total_cost = total_items * json_data["product"][product_id]
-
-    if total_items >= 10:
-        discount = 10
-    elif total_items >= 5:
-        discount = 5
-    elif total_items >= 3:
-        discount = 3
-    total_cost = total_cost * (100-discount)/100    
-
-    print(f"You've got {discount}% discount! Your total cost is {total_cost}!")

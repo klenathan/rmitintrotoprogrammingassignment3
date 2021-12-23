@@ -13,26 +13,29 @@ def list_all(json_data):
     :param: dict: json_data: dictionary contain all data from database
     '''
     cls()
-    try:
-        table = PrettyTable(
-            ['ID', 'Book Title', 'Author', 'Quantity', 'Price'])
-        table.align = 'l'
-        for item in json_data['product']:
-            table.add_row([
-                item,
-                json_data['product'][item]['title'],
-                json_data['product'][item]['author'],
-                json_data['product'][item]['quantity'],
-                json_data['product'][item]['price'], ])
-        print(table)
-        get_item(json_data)
-    except Exception as e:
-        print(e)
+    while True:
+        try:
+            table = PrettyTable(
+                ['ID', 'Book Title', 'Author', 'Quantity', 'Price'])
+            table.align = 'l'
+            for item in json_data['product']:
+                table.add_row([
+                    item,
+                    json_data['product'][item]['title'],
+                    json_data['product'][item]['author'],
+                    json_data['product'][item]['quantity'],
+                    json_data['product'][item]['price'], 
+                ])
+            print(table)
+            if search_item(json_data) == "0":
+                break
+            
+        except Exception as e:
+            print(e)
 
-
-def get_item(json_data):
+def search_item(json_data):
     '''
-    The function print out product's detailed description based on user's selection
+    The function print out product's detailed description based on product id
 
     :param:
         dict: json_data: dictionary contain all data from database
@@ -42,21 +45,9 @@ def get_item(json_data):
             "\nPlease enter the product ID to get all information of the item or press 0 to return to the main menu: ")
         if user_option == "0":
             cls()
-            break
+            return "0"
         try:
-            cls()
-            print('\n')
-            for detail in json_data['product'][user_option]:
-                if detail == "rating":
-                    print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
-                else:
-                    print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
-
-            print("\n0. Exit to main menu")
-            print("1. Purchase")
-            product_option = input("Do you want to purchase this item? ")
+            product_option = query_detail(json_data, user_option)
 
             if product_option == "1":
                 handle_order(user_option, json_data)
@@ -65,20 +56,19 @@ def get_item(json_data):
                 break
             elif product_option == "0":
                 cls()
-                list_all(json_data)
                 break
             else:
                 input('Invalid option, press any key to try again')
                 cls()
-                get_item(json_data)
+                search_item(json_data)
+                break
 
         except Exception as e:
             print(e)
             print(
                 f"The item {str(e)} does not exist! Please try a valid number!")
-            get_item(json_data)
+            search_item(json_data)
             break
-
 
 def search_by_name(json_data):
     '''
@@ -118,8 +108,8 @@ def search_by_name(json_data):
                             cls()
                             break
                         else:
-                            input('heh?')
-                            print('Invalid option')
+                            input('Invalid option, press any key: ')
+                            break
                 if product_exist == 0:
                     print('Please try again: ')
                     search_by_name(json_data)
@@ -130,88 +120,18 @@ def search_by_name(json_data):
                 print(
                     f"The item {e} does not exist! Please try the valid name!")
 
-
-def search_by_id(json_data):
-    '''
-    The function print out product's detailed description based on user's selection
-
-    :param:
-        dict: json_data: dictionary contain all data from database
-    '''
-    while True:
-        user_option = input(
-            "\nPlease enter the product ID to get all information of the item or press 0 to return to the main menu: ")
-        if user_option == "0":
-            cls()
-            break
-        try:
-            cls()
-            print('\n')
-            for detail in json_data['product'][user_option]:
-                if detail == "rating":
-                    print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
-                else:
-                    print(
-                        f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
-
-            print("\n0. Exit to main menu")
-            print("1. Purchase")
-            product_option = input("Do you want to purchase this item? ")
-
-            if product_option == "1":
-                handle_order(user_option, json_data)
-                exit_option = input(
-                    "\nPress any key to go back to main menu: ")
-                if exit_option:
-                    cls()
-                    break
-                else:
-                    break
-            elif product_option == "0":
-                cls()
-                break
-            else:
-                input('Invalid option, press any key to try again')
-                cls()
-                search_by_id(json_data)
-
-        except Exception as e:
-            print(e)
-            print(
-                f"The item {str(e)} does not exist! Please try a valid number!")
-            search_by_id(json_data)
-            break
-
-
-def return_shipment(json_data):
-    order_exist = 0
+def query_detail(json_data, user_option):
     cls()
-    while True:
-        order_id = input("Please input your order id: ")
-        for i in json_data['order']:
-            if i == order_id:
-                order_exist += 1
-                customer_name = input("What is the buyer's name? ")
-                return_reason = input("What is your reason of return? ")
-                json_data['return'][order_id] = {
-                    "customer name": customer_name,
-                    "reason of return": return_reason
-                }
-                json_file = open('data.json', 'w')
-                json.dump(json_data, json_file, indent=4)
-                print(
-                    '\nSorry for your inconvinient.\nWe will process your request as soon as possible')
-                input("Press any key to bo gack: ")
+    print('\n')
+    for detail in json_data['product'][user_option]:
+        if detail == "rating":
+            print(
+                f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
+        else:
+            print(
+                f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
 
-                cls()
-                break
-        if order_exist == 0:
-            print('Order does not exist')
-            print("\n 0. Exit")
-            print("1. Try again")
-            if input("Try again? ") == "1":
-                return_shipment(json_data)
-                break
-        cls()
-        break
+    print("\n0. Exit to main menu")
+    print("1. Purchase")
+    product_option = input("Do you want to purchase this item? ")
+    return product_option
