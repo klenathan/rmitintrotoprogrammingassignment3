@@ -70,13 +70,12 @@ def discount(json_data, customer_id_input):
         if customer_id_input == customer_id:
             total_items = int(json_data['order'][order_id]['quantity'])
 
-    if total_items >= 10:
-        discount = 10
-    elif total_items >= 5:
-        discount = 5
-    elif total_items >= 3:
-        discount = 3
-    
+            if total_items >= 10:
+                discount = 10
+            elif total_items >= 5:
+                discount = 5
+            elif total_items >= 3:
+                discount = 3
     return discount
 
 def return_shipment(json_data):
