@@ -1,14 +1,20 @@
 import json
 
-from data import list_all, search_item, search_by_name
-from additional_features import return_shipment, handle_review
+from basic_features import list_all, search_item, search_by_name
+from additional_features import best_books, return_shipment, handle_review, best_books
 from cls import cls
 
-# Open file json
+
 def open_file():
+    """
+    The functions opens the json file
+    :param: None
+    :return: None
+    """
     with open('data.json', 'r+') as json_file:
         json_data = json.load(json_file)
         return json_data
+
 
 """
 Check-list:
@@ -19,22 +25,32 @@ Check-list:
 4.  List all information of a specific customer ???
 5.  Placing orders | To-do: a lot ...| #Done? Thai
 
-7.  Payment management ## In Progress ### ??
+6.  Payment management ## In Progress ### ??
 
-8.  Discount # Done - Thu
-9.  Return shipment # Done - Thai
-10. Product review # Done - Thai
-11. Used product 70% price 
+7.  Discount # Done - Thu
+8.  Return shipment # Done - Thai
+9. Product review # Done - Thai
+10. Top 3 best-selling books
 """
-# User option
+
+
 def user_option():
+    """
+    The function takes the user input
+    :param: None
+    :return: 
+        option: user option from 0 to 6 (int)
+    """
+
     option = input('''
 Choose one of these options:
 0. Exit                     1. List all items
 2. Search item by name      3. Search item by item id 
 4. Return shipment          5. Review order product
+6. Top 3 best-selling books
 Your option:  ''')
-    if(option not in ['0', '1', '2', '3', '4', '5']):
+
+    if(option not in ['0', '1', '2', '3', '4', '5', '6']):
         cls()
         print('Wrong input, please try again!')
         option = '-1'
@@ -71,6 +87,9 @@ if __name__ == '__main__':
             elif user == 5: 
                 cls()
                 handle_review(json_data)
-
+            # Best-selling books
+            elif user == 6:
+                cls()
+                best_books(json_data)
     except KeyboardInterrupt:
         cls()

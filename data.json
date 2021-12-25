@@ -1,20 +1,22 @@
 {
     "product": {
         "1": {
-            "title": "Product one",
-            "quantity": 79,
+            "title": "Product 1",
+            "quantity": 84,
+            "sold": 25,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "price": 10,
             "author": "Someone",
             "rating": {
-                "total_point": 63,
-                "num_of_review": 15,
-                "average": 4.2
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "2": {
-            "title": "Product two",
-            "quantity": 19,
+            "title": "Product 2",
+            "quantity": 182,
+            "sold": 8,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -25,8 +27,9 @@
             }
         },
         "3": {
-            "title": "Product three",
-            "quantity": 40,
+            "title": "Product 3",
+            "quantity": 135,
+            "sold": 5,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -37,8 +40,9 @@
             }
         },
         "4": {
-            "title": "Product four",
-            "quantity": 12,
+            "title": "Product 4",
+            "quantity": 150,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -49,8 +53,9 @@
             }
         },
         "5": {
-            "title": "Product five",
+            "title": "Product 5",
             "quantity": 123,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -61,8 +66,9 @@
             }
         },
         "6": {
-            "title": "Product one",
+            "title": "Product 6",
             "quantity": 97,
+            "sold": 0,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "price": 10,
             "author": "Someone",
@@ -73,8 +79,9 @@
             }
         },
         "7": {
-            "title": "Product two",
-            "quantity": 19,
+            "title": "Product 7",
+            "quantity": 119,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -85,8 +92,9 @@
             }
         },
         "8": {
-            "title": "Product three",
-            "quantity": 40,
+            "title": "Product 8",
+            "quantity": 140,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -97,8 +105,9 @@
             }
         },
         "9": {
-            "title": "Product four",
-            "quantity": 12,
+            "title": "Product 9",
+            "quantity": 120,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -109,8 +118,9 @@
             }
         },
         "10": {
-            "title": "Product five",
-            "quantity": 123,
+            "title": "Product 10",
+            "quantity": 93,
+            "sold": 10,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -121,8 +131,9 @@
             }
         },
         "11": {
-            "title": "Product one",
+            "title": "Product 11",
             "quantity": 97,
+            "sold": 0,
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "price": 10,
             "author": "Someone",
@@ -133,8 +144,9 @@
             }
         },
         "12": {
-            "title": "Product two",
-            "quantity": 19,
+            "title": "Product 12",
+            "quantity": 120,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -145,8 +157,9 @@
             }
         },
         "13": {
-            "title": "Product three",
-            "quantity": 40,
+            "title": "Product 13",
+            "quantity": 140,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -157,8 +170,9 @@
             }
         },
         "14": {
-            "title": "Product four",
-            "quantity": 12,
+            "title": "Product 14",
+            "quantity": 120,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -169,8 +183,9 @@
             }
         },
         "15": {
-            "title": "Product five",
-            "quantity": 111,
+            "title": "Product 15",
+            "quantity": 70,
+            "sold": 39,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -181,8 +196,9 @@
             }
         },
         "16": {
-            "title": "Product five",
+            "title": "Product 16",
             "quantity": 111,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -193,8 +209,9 @@
             }
         },
         "17": {
-            "title": "Product five",
+            "title": "Product 17",
             "quantity": 111,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -205,8 +222,9 @@
             }
         },
         "18": {
-            "title": "Product five",
+            "title": "Product 18",
             "quantity": 111,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -217,8 +235,9 @@
             }
         },
         "19": {
-            "title": "Product five",
-            "quantity": 111,
+            "title": "Product 19",
+            "quantity": 100,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -229,8 +248,9 @@
             }
         },
         "20": {
-            "title": "Product five",
-            "quantity": 111,
+            "title": "Product 20",
+            "quantity": 85,
+            "sold": 0,
             "description": "hello",
             "price": 10,
             "author": "Someone",
@@ -262,30 +282,63 @@
             "email": "person3@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St"
+        },
+        "4": {
+            "id": "4",
+            "name": "Person 4",
+            "email": "person4@mail.com",
+            "phone_num": "0123456789",
+            "address": "01 Main St"
         }
     },
     "order": {
-        "ZQEPE21": {
-            "customer_id": "2",
-            "product_id": "1",
+        "IHSS74D": {
+            "customer_id": "1",
+            "product_id": "10",
             "quantity": 10,
-            "customer_address": "abc",
-            "reviewed": "False"
-        },
-        "U6P8X8M": {
-            "customer_id": "3",
-            "product_id": "1",
-            "quantity": 1,
+            "total_cost": 100.0,
             "customer_address": "01 Main St",
             "reviewed": "False"
         },
-        "8T09U3S": {
+        "SWV1GHN": {
             "customer_id": "2",
+            "product_id": "15",
+            "quantity": 19,
+            "total_cost": 190.0,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "O67ZXHP": {
+            "customer_id": "1",
             "product_id": "1",
+            "quantity": 25,
+            "total_cost": 225.0,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "K6E6877": {
+            "customer_id": "3",
+            "product_id": "15",
+            "quantity": 20,
+            "total_cost": 200.0,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "YZS3A3G": {
+            "customer_id": "4",
+            "product_id": "2",
+            "quantity": 8,
+            "total_cost": 80.0,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "GX7FUP0": {
+            "customer_id": "3",
+            "product_id": "3",
             "quantity": 5,
             "total_cost": 45.0,
             "customer_address": "01 Main St",
-            "reviewed": "True"
+            "reviewed": "False"
         }
     },
     "return": {

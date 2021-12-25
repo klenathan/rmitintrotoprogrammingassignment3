@@ -1,11 +1,15 @@
 import json
 from cls import cls
+from styling import style
+
 
 def handle_review(json_data):
-    '''
-    The function take review from customer and write to database
-    :param: dict: json_data: dictionary contain all data from database
-    '''
+    """
+    The function takes review from customer and write to database
+    :param: 
+        json_data: dictionary containing all data from database (dict)
+    :return: None
+    """
     while True:
         try:
             order_id = input("What was your order id? ")
@@ -25,13 +29,13 @@ def handle_review(json_data):
                     print(f'Product id: {product_id}')
                     print(f'Book title: {json_data["product"][product_id]["title"]}')
                     print(f'Bought quantity: {json_data["order"][order_id]["quantity"]}')
-                    
+
                     user_review = int(input("\nHow do you rate the product from 1 to 5? "))
                     if user_review > 5:
                         user_review == 5
                     elif user_review < 1:
                         user_review == 1
-                    
+
                     total_point += user_review
                     num_of_review += 1
                     average_point = total_point/num_of_review
@@ -55,16 +59,19 @@ def handle_review(json_data):
                 cls()
                 break
 
+
 def discount(json_data, customer_id_input):
-    '''
-    The function calculate discount based on previous orders from specific customer
-    :param: 
-        dict: json_data: dictionary contain all information
-        str: customer_id_input: customer_id of the purchasing customer
+    """
+    The function calculates discount based on previous orders from a specific customer
+    :param:
+        json_data: dictionary containing all data from database (dict)
+        customer_id_input: customer_id of the purchasing customer (str)
     :return:
-        int: discount: calculated discount rate
-    '''
+        discount: calculated discount rate (int)
+    """
     discount = 0
+    total_items = 0
+
     for order_id in json_data['order']:
         customer_id = json_data['order'][order_id]['customer_id']
         if customer_id_input == customer_id:
@@ -76,14 +83,17 @@ def discount(json_data, customer_id_input):
         discount = 5
     elif total_items >= 3:
         discount = 3
-    
+
     return discount
 
+
 def return_shipment(json_data):
-    '''
-    The function log return request from customer to the database
-    :param: dict: json_data: dictionary contain all information
-    '''
+    """
+    The function logs return request from customer to the database
+    :param: 
+        json_data: dictionary containing all data from database (dict)
+    :return: None
+    """
     cls()
     while True:
         try:
@@ -111,3 +121,22 @@ def return_shipment(json_data):
             if input("Press 0 to exit, 1 to try again ") == "0":
                 cls()
                 break
+
+
+def best_books(json_data):
+    """
+    The function displays top 3 best-selling books
+    :param: 
+        json_data: dictionary containing all data from database (dict)
+    :return: None
+    """
+    sold_lst = []
+    
+    for id in json_data['product']:
+        sold_lst.append(json_data['product'][id]['sold'])
+    sold_lst.sort(reverse=True)
+    best_books = sold_lst[:3]
+
+    for detail in json_data['product']:
+        if json_data['product'][detail]['sold'] in best_books:
+            print(json_data['product'][detail])

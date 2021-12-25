@@ -3,13 +3,16 @@ import os
 
 def cls():
     '''
-    The function clear console/terminal based on the user's operating system
+    The function clears console/terminal based on the user's operating system
+    :param: None
+    :return: clear  
     '''
     if platform.system() == 'Windows':
-        return os.system('cls')
+        clear = os.system('cls')
     elif platform.system() == 'Darwin':
-        return os.system('clear')
+        clear = os.system('clear')
     elif platform.system() == 'Linux':
-        return os.system('clear')
+        clear = os.system('clear')
     else:
-        return print("The program can only clear on Window, MacOS and Linux")
+        print("The program can only clear on Window, MacOS and Linux") 
+    return clear

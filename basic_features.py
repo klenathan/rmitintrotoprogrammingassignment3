@@ -6,11 +6,12 @@ from styling import style
 
 
 def list_all(json_data):
-    '''
-    The function print all products information from database.
-
-    :param: dict: json_data: dictionary contain all data from database
-    '''
+    """
+    The function prints all products information from database.
+    :param: 
+        json_data: dictionary contain all data from database (dict)
+    :return: None
+    """
     cls()
     while True:
         try:
@@ -33,16 +34,17 @@ def list_all(json_data):
         except Exception as e:
             print(e)
 
-def search_item(json_data):
-    '''
-    The function print out product's detailed description based on product id
 
+def search_item(json_data):
+    """
+    The function prints out product's detailed description based on product id
     :param:
-        dict: json_data: dictionary contain all data from database
-    '''
+        json_data: dictionary containing all data from database (dict)
+    :return: None
+    """
     while True:
         user_option = input(
-            "\nPlease enter the product ID to get all information of the item or press 0 to return to the main menu: ")
+            "\nPlease enter the product ID to get all information of the item or press 0 to exit: ")
         if user_option == "0":
             cls()
             return "0"
@@ -59,7 +61,7 @@ def search_item(json_data):
                     cls()
                     break
                 else:
-                    input('Invalid option, press any key to try again')
+                    input('Invalid option, press any key to try again ')
                     cls()
                     search_item(json_data)
                     break
@@ -71,12 +73,13 @@ def search_item(json_data):
                 search_item(json_data)
                 break
 
-def search_by_name(json_data):
-    '''
-    The function print out product's detailed description based ont its name/title
 
-    :param: dict: json_data: dictionary contain all data from database
-    '''
+def search_by_name(json_data):
+    """
+    The function prints out product's detailed description based ont its name/title
+    :param: json_data: dictionary containing all data from database (dict)
+    :return: None
+    """
     product_exist = 0
     while True:
         book_name = input(
@@ -85,23 +88,23 @@ def search_by_name(json_data):
             break
         else:
             try:
-                for id in json_data['product']:
-                    title = json_data['product'][id]["title"]
+                for product_id in json_data['product']:
+                    title = json_data['product'][product_id]["title"]
                     if title == book_name:
                         product_exist += 1
-                        for detail in json_data['product'][id]:
+                        for detail in json_data['product'][product_id]:
                             if detail == "rating":
                                 print(
-                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]["average"]:.2f}')
+                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][product_id][detail]["average"]:.2f}')
                             else:
                                 print(
-                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][id][detail]}')
-                        print("\n0. Exit to main menu")
+                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][product_id][detail]}')
+                        print("\n0. Exit")
                         print("1. Purchase")
                         product_option = input(
                             "Do you want to purchase this item? ")
                         if product_option == "1":
-                            handle_order(id, json_data)
+                            handle_order(product_id, json_data)
                             input(
                                 "\nPress any key to go back to main menu: ")
                             break
@@ -121,7 +124,9 @@ def search_by_name(json_data):
                 print(
                     f"The item {e} does not exist! Please try the valid name!")
 
+
 def query_detail(json_data, user_option):
+    ####### docstring dau?
     cls()
     print('\n')
     for detail in json_data['product'][user_option]:
@@ -132,7 +137,7 @@ def query_detail(json_data, user_option):
             print(
                 f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
 
-    print("\n0. Exit to main menu")
+    print("\n0. Exit")
     print("1. Purchase")
     product_option = input("Do you want to purchase this item? ")
     return product_option
