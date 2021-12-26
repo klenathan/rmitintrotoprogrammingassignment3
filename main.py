@@ -15,23 +15,6 @@ def open_file():
         data = json.load(json_file)
         return data
 
-
-"""
-Check-list:
-0.  Exit
-1.  List all items #Done -Thu 
-2.  Search item by name #Done - Thu
-3.  Search item by item id #Done - Thu
-4.  List all information of a specific customer #Done???
-5.  Placing orders #Done? Thai
-
-6.  Discount # Done - Thu
-7.  Return shipment # Done - Thai
-8. Product review # Done - Thai
-9. Best-selling books # Thinh 
-"""
-
-
 def user_option():
     """
     The function takes the user input
@@ -45,7 +28,7 @@ Choose one of these options:
 0. Exit                       1. List all items
 2. Search item by name        3. Search item by item id 
 4. Return shipment            5. Review order product
-6. Top 5 best-selling books   7. Track purchase history
+6. Best-selling books rank    7. Customer information & purchase history
 Your option:  ''')
 
     if option not in ['0', '1', '2', '3', '4', '5', '6', '7']:

@@ -13,25 +13,27 @@ Jang Soohyuk<br>
 - List all information of a specific customer
 - Placing orders
 ### Additional features
-- Payment management
-- Discount
+- Discount (Integrate in ordering process)
 - Return shipment
 - Product review
+- Best seller product ranking
+- Purchase history (Integrate with list all information from a specific customer)
 ### Json file structure
-``` yaml
+``` json
 data.json
 {
     "product": {
         product_id: {
             "title": product_title,
             "quantity": product_quantity,
+            "sold": sold_amount,
             "description": product_desc,
             "price": price,
-            "author": author",
+            "author": author,
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
-                "average": "No Review"
+                "average": 0
             }
         }
     },
@@ -41,7 +43,15 @@ data.json
             "name": customer_name,
             "email": customer_email,
             "phone_num": customer_phone_num,
-            "address": customer_add
+            "address": customer_add,
+            "order": {
+                order_id: {
+                    "product_id": product_id,
+                    "quantity": bought_quantity,
+                    "total_cost": total_cost,
+                    "reviewed": reviewed
+                }
+            }
         }
     },
     "order": {
@@ -49,13 +59,16 @@ data.json
             "id": order_id,
             "customer_id": customer_id,
             "product_id": product_id,
-            "customer_address": customer_address
+            "customer_address": customer_address,
+            "quantity": bought_quantity,
+            "total_cost": total_cost,
+            "reviewed": reviewed
         }
     },
     "return": {
         "order_id": {
-            "customer name": "customer_name",
-            "reason of return": "reason"
+            "customer name": customer_name,
+            "reason of return": reason
         }
     }
 }
