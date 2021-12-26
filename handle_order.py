@@ -33,11 +33,8 @@ def handle_order(product_id, json_data):
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
 
-        # create nested dictionary 
-        customer_dict['order'] = {}
-        for order_id in json_data['order']:
-            if json_data['order'][order_id]['customer_id'] in json_data['customer']:
-                customer_dict['order'][order_id] = nested_order_dict
+        # create nested dictionary #??????????????????????????
+        json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
 
         json_data['product'][product_id]['quantity'] = updated_quantity
         json_data['product'][product_id]['sold'] += order_quantity
@@ -140,7 +137,8 @@ def handle_data(json_data, product_id, order_quantity):
         "name": customer_name,
         "email": customer_email,
         "phone_num": customer_phone,
-        "address": customer_address
+        "address": customer_address,
+        "order": {}
     }
 
     # Display price

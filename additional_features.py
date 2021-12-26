@@ -99,7 +99,7 @@ def return_shipment(json_data):
     while True:
         try:
             order_id = input("\nPlease input your order id: ")
-            if json_data['return'][order_id]:
+            if json_data['order'][order_id]:
                 for i in json_data['order']:
                     if i == order_id:
                         customer_name = input("What is the buyer's name? ")

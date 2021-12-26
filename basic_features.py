@@ -69,8 +69,6 @@ def search_item(json_data):
                 print(e)
                 print(
                     f"The item {str(e)} does not exist! Please try a valid number!")
-                search_item(json_data)
-                break
 
 
 def search_by_name(json_data):
@@ -165,8 +163,13 @@ def purchase_tracking(json_data):
                 break
             else:
                 for detail in json_data['customer'][user_option]:
-                    print(
-                        f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
+                    if detail == "order":
+                        print(f"{Style.BOLD}Order list:{Style.END}")
+                        for order in json_data['customer'][user_option]["order"]:
+                            print(f'{order}')
+                    else:
+                        print(
+                            f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
 
         except Exception as e:
-            print(e)
+            print(f'Customer id {e} does not exist')
