@@ -156,7 +156,8 @@ def best_books(json_data):
                 ])
             print(table)
             input("Press any key to go back to main menu")
+            cls()
             break
         except Exception as e:
-            # print(e)
-            continue
+            print(e)
+            break
