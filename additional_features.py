@@ -1,6 +1,7 @@
 import json
 from cls import cls
 
+from prettytable import PrettyTable
 
 def handle_review(json_data):
     """
@@ -15,7 +16,8 @@ def handle_review(json_data):
             if json_data["order"][order_id]:
                 if json_data["order"][order_id]["reviewed"] != "False":
                     print("The order has been rated")
-                    user_opt = input("Press 0 to go back or any key to try again\n")
+                    user_opt = input(
+                        "Press 0 to go back or any key to try again\n")
                     if user_opt == "0":
                         cls()
                         break
@@ -26,10 +28,13 @@ def handle_review(json_data):
 
                     print("\nOrder details")
                     print(f'Product id: {product_id}')
-                    print(f'Book title: {json_data["product"][product_id]["title"]}')
-                    print(f'Bought quantity: {json_data["order"][order_id]["quantity"]}')
+                    print(
+                        f'Book title: {json_data["product"][product_id]["title"]}')
+                    print(
+                        f'Bought quantity: {json_data["order"][order_id]["quantity"]}')
 
-                    user_review = int(input("\nHow do you rate the product from 1 to 5? "))
+                    user_review = int(
+                        input("\nHow do you rate the product from 1 to 5? "))
                     average_point = 0
                     if user_review <= 5:
                         if user_review >= 1:
@@ -51,7 +56,8 @@ def handle_review(json_data):
                     break
         except Exception as e:
             print(f'Order ID {e} does not exist')
-            try_again_opt = input("Type 0 to go back to main menu, any other key to try again\n")
+            try_again_opt = input(
+                "Type 0 to go back to main menu, any other key to try again\n")
             if try_again_opt == "0":
                 cls()
                 break
@@ -72,7 +78,7 @@ def discount(json_data, customer_id_input):
         customer_id = json_data['order'][order_id]['customer_id']
         if customer_id_input == customer_id:
             total_items = int(json_data['order'][order_id]['quantity'])
-            
+
             if total_items >= 10:
                 discount_rate = 10
             elif total_items >= 5:
@@ -97,14 +103,16 @@ def return_shipment(json_data):
                 for i in json_data['order']:
                     if i == order_id:
                         customer_name = input("What is the buyer's name? ")
-                        return_reason = input("What is your reason of return? ")
+                        return_reason = input(
+                            "What is your reason of return? ")
                         json_data['return'][order_id] = {
                             "customer_name": customer_name,
                             "reason_of_return": return_reason
                         }
                         json_file = open('data.json', 'w')
                         json.dump(json_data, json_file, indent=4)
-                        print('\nSorry for your inconvenience.\nWe will process your request as soon as possible')
+                        print(
+                            '\nSorry for your inconvenience.\nWe will process your request as soon as possible')
                         input("Press any key to go back: ")
 
                         cls()
@@ -125,15 +133,30 @@ def best_books(json_data):
         json_data: dictionary containing all data from database (dict)
     :return: None
     """
-    sold_lst = []
-    
-    for book_id in json_data['product']:
-        sold_lst.append(json_data['product'][book_id]['sold'])
-    sold_lst.sort(reverse=True)
-    book_lst = sold_lst[:3]
+    while True:
+        try:
+            sorted_sold = sorted(json_data['product'],
+                                 key=lambda item: json_data['product'][item]["sold"],
+                                 reverse=True)
 
-    for detail in json_data['product']:
-        if json_data['product'][detail]['sold'] in book_lst:
-            print(json_data['product'][detail])
-    input('\nPress any keys to return to the main menu ')
-    cls()
+            table = PrettyTable(
+                ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating", "Sold"])
+            table.align = 'l'
+
+            for id in sorted_sold:
+                # print(f'id: {id} sold: {json_data["product"][id]["sold"]}')
+                table.add_row([
+                    id,
+                    json_data['product'][id]['title'],
+                    json_data['product'][id]['author'],
+                    json_data['product'][id]['quantity'],
+                    json_data['product'][id]['price'], 
+                    f'{json_data["product"][id]["rating"]["average"]:.2f}',
+                    json_data['product'][id]['sold'],
+                ])
+            print(table)
+            input("Press any key to go back to main menu")
+            break
+        except Exception as e:
+            # print(e)
+            continue

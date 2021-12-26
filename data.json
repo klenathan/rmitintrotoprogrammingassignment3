@@ -1,25 +1,25 @@
 {
     "product": {
         "1": {
-            "title": "Product 1",
+            "title": "Atomic Habits",
             "quantity": 84,
             "sold": 25,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "price": 10,
-            "author": "Someone",
+            "description": "An Easy & Proven Way to Build Good Habits & Break Bad OnesAn Easy & Proven Way to Build Good Habits & Break Bad Ones",
+            "price": 11.98,
+            "author": "James Clear",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 15,
+                "num_of_review": 3,
+                "average": 5
             }
         },
         "2": {
-            "title": "Product 2",
+            "title": "The 1619 Project",
             "quantity": 182,
             "sold": 8,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "A New Origin Story",
+            "price": 22.80,
+            "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -27,12 +27,12 @@
             }
         },
         "3": {
-            "title": "Product 3",
+            "title": "Will",
             "quantity": 135,
             "sold": 5,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Will Smith’s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale—but it’s only half the story.",
+            "price": 19,
+            "author": "Will Smith & Mark Manson",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -40,12 +40,12 @@
             }
         },
         "4": {
-            "title": "Product 4",
+            "title": "The Psychology of Money",
             "quantity": 150,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Timeless lessons on wealth, greed, and happiness",
+            "price": 16.80,
+            "author": "Morgan Housel",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -53,12 +53,12 @@
             }
         },
         "5": {
-            "title": "Product 5",
+            "title": "Atlas of the Heart",
             "quantity": 123,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Mapping Meaningful Connection and the Language of Human Experience",
+            "price": 18.34,
+            "author": "Brené Brown",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -66,12 +66,12 @@
             }
         },
         "6": {
-            "title": "Product 6",
+            "title": "The Real Anthony Fauci",
             "quantity": 97,
             "sold": 0,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "price": 10,
-            "author": "Someone",
+            "description": "Bill Gates, Big Pharma, and the Global War on Democracy and Public Health",
+            "price": 19.42,
+            "author": "Robert F. Kennedy Jr.",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -79,12 +79,12 @@
             }
         },
         "7": {
-            "title": "Product 7",
+            "title": "Anne Frank: The Diary of a Young Girl",
             "quantity": 119,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Discovered in the attic in which she spent the last years of her life, Anne Frank’s remarkable diary has become a world classic",
+            "price": 13.50,
+            "author": "Anne Frank",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -92,12 +92,12 @@
             }
         },
         "8": {
-            "title": "Product 8",
+            "title": "A Guide to the Good Life",
             "quantity": 140,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "The Ancient Art of Stoic Joy",
+            "price": 13.32,
+            "author": "William B. Irvine",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -105,12 +105,12 @@
             }
         },
         "9": {
-            "title": "Product 9",
+            "title": "The Code Breaker",
             "quantity": 120,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "The bestselling author of Leonardo da Vinci and Steve Jobs returns with a “compelling” (The Washington Post) account of how Nobel Prize winner Jennifer Doudna and her colleagues launched a revolution that will allow us to cure diseases, fend off viruses, and have healthier babies.",
+            "price": 21.49,
+            "author": "Walter Isaacson",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -118,25 +118,25 @@
             }
         },
         "10": {
-            "title": "Product 10",
+            "title": "The Dawn of Everything",
             "quantity": 93,
             "sold": 10,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "A dramatically new understanding of human history, challenging our most fundamental assumptions about social evolution—from the development of agriculture and cities to the origins of the state, democracy, and inequality—and revealing new possibilities for human emancipation.",
+            "price": 16.99,
+            "author": "David Graeber",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 4,
+                "num_of_review": 1,
+                "average": 4
             }
         },
         "11": {
-            "title": "Product 11",
+            "title": "Sapiens",
             "quantity": 97,
             "sold": 0,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "price": 10,
-            "author": "Someone",
+            "description": "A Brief History of Humankind",
+            "price": 20.21,
+            "author": "Yuval Noah Harari",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -144,12 +144,12 @@
             }
         },
         "12": {
-            "title": "Product 12",
+            "title": "How to Win Friends & Influence People",
             "quantity": 120,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "The only book you need to lead you to success",
+            "price": 18.39,
+            "author": "Dale Carnegie",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -157,12 +157,12 @@
             }
         },
         "13": {
-            "title": "Product 13",
+            "title": "The 48 Laws of Power",
             "quantity": 140,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "The definitive manual for anyone interested in gaining, observing, or defending against ultimate control",
+            "price": 33.27,
+            "author": "Robert Greene",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -170,12 +170,12 @@
             }
         },
         "14": {
-            "title": "Product 14",
+            "title": "The Storyteller",
             "quantity": 120,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Tales of Life and Music ",
+            "price": 17.99,
+            "author": "Dave Grohl",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -183,25 +183,25 @@
             }
         },
         "15": {
-            "title": "Product 15",
+            "title": "Becoming",
             "quantity": 70,
             "sold": 39,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "An intimate, powerful, and inspiring memoir by the former First Lady of the United States",
+            "price": 11.89,
+            "author": "Michelle Obama",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 18,
+                "num_of_review": 4,
+                "average": 4.5
             }
         },
         "16": {
-            "title": "Product 16",
+            "title": "A Promised Land",
             "quantity": 111,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "A riveting, deeply personal account of history in the making—from the president who inspired us to believe in the power of democracy",
+            "price": 14.99,
+            "author": "Barack Obama",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -209,12 +209,12 @@
             }
         },
         "17": {
-            "title": "Product 17",
+            "title": "Think Again",
             "quantity": 111,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Learning to question your opinions and open other people's minds, which can position you for excellence at work and wisdom in life",
+            "price": 14.99,
+            "author": "Adam Grant",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -222,12 +222,12 @@
             }
         },
         "18": {
-            "title": "Product 18",
+            "title": "Boundaries Updated and Expanded Edition",
             "quantity": 111,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Join the millions who have learned how to take control of their lives by setting healthy boundaries with their spouses, children, friends, parents, coworkers, and even themselves, in order to live life to the fullest.",
+            "price": 12.72,
+            "author": "Henry Cloud",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -235,12 +235,12 @@
             }
         },
         "19": {
-            "title": "Product 19",
+            "title": "Thinking, Fast and Slow",
             "quantity": 100,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "Daniel Kahneman, the renowned psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.",
+            "price": 21.99,
+            "author": "Daniel Kahneman",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -248,12 +248,12 @@
             }
         },
         "20": {
-            "title": "Product 20",
+            "title": "Never Split the Difference",
             "quantity": 85,
             "sold": 0,
-            "description": "hello",
-            "price": 10,
-            "author": "Someone",
+            "description": "A former international hostage negotiator for the FBI offers a new, field-tested approach to high-stakes negotiations—whether in the boardroom or at home.",
+            "price": 17.99,
+            "author": "Chris Voss & Tahl Raz ",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -297,46 +297,6 @@
             "product_id": "10",
             "quantity": 10,
             "total_cost": 100.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "SWV1GHN": {
-            "customer_id": "2",
-            "product_id": "15",
-            "quantity": 19,
-            "total_cost": 190.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "O67ZXHP": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 25,
-            "total_cost": 225.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "K6E6877": {
-            "customer_id": "3",
-            "product_id": "15",
-            "quantity": 20,
-            "total_cost": 200.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "YZS3A3G": {
-            "customer_id": "4",
-            "product_id": "2",
-            "quantity": 8,
-            "total_cost": 80.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "GX7FUP0": {
-            "customer_id": "3",
-            "product_id": "3",
-            "quantity": 5,
-            "total_cost": 45.0,
             "customer_address": "01 Main St",
             "reviewed": "False"
         }

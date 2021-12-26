@@ -105,9 +105,10 @@ def handle_data(json_data, product_id, order_quantity):
         customer_address = input("Shipping address: ")
     else:
         handle_order(product_id, json_data)
-    
+
+    discount_amount = discount(json_data, customer_id)
     total_price = int(order_quantity) * int(json_data["product"][product_id]["price"])
-    final_price = total_price * (100 - discount(json_data, customer_id)) * 0.01
+    final_price = total_price * (100 - discount_amount) * 0.01
     customer_dict = {
         "id": customer_id,
         "name": customer_name,
@@ -125,7 +126,7 @@ def handle_data(json_data, product_id, order_quantity):
     }
     
     # Display price
-    print(f"You've got {discount(json_data, customer_id)}% discount!")
+    print(f"You've got {discount_amount}% discount!")
     print(f'\nYour total cost is {final_price}$!')
 
     return customer_dict, order_dict, customer_id

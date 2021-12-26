@@ -24,13 +24,13 @@ def list_all(json_data):
                     json_data['product'][item]['title'],
                     json_data['product'][item]['author'],
                     json_data['product'][item]['quantity'],
-                    json_data['product'][item]['price'], 
+                    json_data['product'][item]['price'],
                     f'{json_data["product"][item]["rating"]["average"]:.2f}'
                 ])
             print(table)
             if search_item(json_data) == "0":
                 break
-            
+
         except Exception as e:
             print(e)
 
@@ -128,16 +128,27 @@ def search_by_name(json_data):
 
 
 def query_detail(json_data, user_option):
-    ####### docstring dau?
+    '''
+    The function print out details of specific product and return
+    user's option to purchase the item or not in string of "0" or "1"
+    :param:
+        json_data: dictionary containing all data from database (dict)
+        user_option: product ID needed to be query (str)
+    :return:
+        product_option: user's option to purchase (str)
+    '''
     cls()
     print('\n')
     for detail in json_data['product'][user_option]:
         if detail == "rating":
             print(
-                f'{Style.BOLD}{detail:15}{Style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
+                f'{Style.BOLD}{detail:12}{Style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
+        elif detail == "description":
+            print(
+                f'{Style.BOLD}{detail:12}{Style.END}:\n{json_data["product"][user_option]["description"][:]}')
         else:
             print(
-                f'{Style.BOLD}{detail:15}{Style.END}: {json_data["product"][user_option][detail]}')
+                f'{Style.BOLD}{detail:12}{Style.END}: {json_data["product"][user_option][detail]}')
 
     print("\n0. Exit")
     print("1. Purchase")

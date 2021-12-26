@@ -11,7 +11,7 @@ def open_file():
     :param: None
     :return: data: dictionary containing all data from database (dict)
     """
-    with open('data.json', 'r+') as json_file:
+    with open('data.json', 'r+', encoding='utf-8') as json_file:
         data = json.load(json_file)
         return data
 
@@ -22,15 +22,15 @@ Check-list:
 1.  List all items #Done -Thu 
 2.  Search item by name #Done - Thu
 3.  Search item by item id #Done - Thu
-4.  List all information of a specific customer ???
-5.  Placing orders | To-do: a lot ...| #Done? Thai
+4.  List all information of a specific customer
+5.  Placing orders #Done? Thai
 
 6.  Payment management ## In Progress ### ??
 
 7.  Discount # Done - Thu
 8.  Return shipment # Done - Thai
 9. Product review # Done - Thai
-10. Top 3 best-selling books
+10. Top 5 best-selling books # Thu/Thinh ?
 """
 
 
@@ -47,7 +47,7 @@ Choose one of these options:
 0. Exit                     1. List all items
 2. Search item by name      3. Search item by item id 
 4. Return shipment          5. Review order product
-6. Top 3 best-selling books
+6. Top 5 best-selling books
 Your option:  ''')
 
     if option not in ['0', '1', '2', '3', '4', '5', '6']:
@@ -63,33 +63,34 @@ if __name__ == '__main__':
             user = user_option()
             json_data = open_file()
             # Exit program
-            if user == 0:
-                cls()
-                print('\nThank you for visiting our store! Hope to see you again!')
-                exit(0)
-            # List items and get info of a specific item
-            elif user == 1:
-                cls()
-                list_all(json_data)
-            # Search item by name
-            elif user == 2:
-                cls()
-                search_by_name(json_data)
-            # Search item by ID
-            elif user == 3:
-                cls()
-                search_item(json_data)
-            # Return shipment
-            elif user == 4:
-                cls()
-                return_shipment(json_data)
-            # Review
-            elif user == 5: 
-                cls()
-                handle_review(json_data)
-            # Best-selling books
-            elif user == 6:
-                cls()
-                best_books(json_data)
+            match user:
+                case 0:
+                    cls()
+                    print('\nThank you for visiting our store! Hope to see you again!')
+                    exit(0)
+                # List items and get info of a specific item
+                case 1:
+                    cls()
+                    list_all(json_data)
+                # Search item by name
+                case 2:
+                    cls()
+                    search_by_name(json_data)
+                # Search item by ID
+                case 3:
+                    cls()
+                    search_item(json_data)
+                # Return shipment
+                case 4:
+                    cls()
+                    return_shipment(json_data)
+                # Review
+                case 5: 
+                    cls()
+                    handle_review(json_data)
+                # Best-selling books
+                case 6:
+                    cls()
+                    best_books(json_data)
     except KeyboardInterrupt:
         cls()
