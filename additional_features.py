@@ -128,7 +128,7 @@ def return_shipment(json_data):
 
 def best_books(json_data):
     """
-    The function displays top 3 best-selling books
+    The function displays best-selling books
     :param: 
         json_data: dictionary containing all data from database (dict)
     :return: None
@@ -155,7 +155,7 @@ def best_books(json_data):
                     json_data['product'][id]['sold'],
                 ])
             print(table)
-            input("Press any key to go back to main menu")
+            input("Press any key to go back to main menu ")
             cls()
             break
         except Exception as e:

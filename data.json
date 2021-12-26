@@ -2,23 +2,23 @@
     "product": {
         "1": {
             "title": "Atomic Habits",
-            "quantity": 84,
-            "sold": 25,
+            "quantity": 192,
+            "sold": 0,
             "description": "An Easy & Proven Way to Build Good Habits & Break Bad OnesAn Easy & Proven Way to Build Good Habits & Break Bad Ones",
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 15,
-                "num_of_review": 3,
-                "average": 5
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "2": {
             "title": "The 1619 Project",
-            "quantity": 182,
-            "sold": 8,
+            "quantity": 160,
+            "sold": 0,
             "description": "A New Origin Story",
-            "price": 22.80,
+            "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
                 "total_point": 0,
@@ -29,8 +29,8 @@
         "3": {
             "title": "Will",
             "quantity": 135,
-            "sold": 5,
-            "description": "Will Smith’s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale—but it’s only half the story.",
+            "sold": 0,
+            "description": "Will Smith\u2019s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale\u2014but it\u2019s only half the story.",
             "price": 19,
             "author": "Will Smith & Mark Manson",
             "rating": {
@@ -44,7 +44,7 @@
             "quantity": 150,
             "sold": 0,
             "description": "Timeless lessons on wealth, greed, and happiness",
-            "price": 16.80,
+            "price": 16.8,
             "author": "Morgan Housel",
             "rating": {
                 "total_point": 0,
@@ -54,11 +54,11 @@
         },
         "5": {
             "title": "Atlas of the Heart",
-            "quantity": 123,
+            "quantity": 113,
             "sold": 0,
             "description": "Mapping Meaningful Connection and the Language of Human Experience",
             "price": 18.34,
-            "author": "Brené Brown",
+            "author": "Bren\u00e9 Brown",
             "rating": {
                 "total_point": 0,
                 "num_of_review": 0,
@@ -82,8 +82,8 @@
             "title": "Anne Frank: The Diary of a Young Girl",
             "quantity": 119,
             "sold": 0,
-            "description": "Discovered in the attic in which she spent the last years of her life, Anne Frank’s remarkable diary has become a world classic",
-            "price": 13.50,
+            "description": "Discovered in the attic in which she spent the last years of her life, Anne Frank\u2019s remarkable diary has become a world classic",
+            "price": 13.5,
             "author": "Anne Frank",
             "rating": {
                 "total_point": 0,
@@ -108,7 +108,7 @@
             "title": "The Code Breaker",
             "quantity": 120,
             "sold": 0,
-            "description": "The bestselling author of Leonardo da Vinci and Steve Jobs returns with a “compelling” (The Washington Post) account of how Nobel Prize winner Jennifer Doudna and her colleagues launched a revolution that will allow us to cure diseases, fend off viruses, and have healthier babies.",
+            "description": "The bestselling author of Leonardo da Vinci and Steve Jobs returns with a \u201ccompelling\u201d (The Washington Post) account of how Nobel Prize winner Jennifer Doudna and her colleagues launched a revolution that will allow us to cure diseases, fend off viruses, and have healthier babies.",
             "price": 21.49,
             "author": "Walter Isaacson",
             "rating": {
@@ -119,15 +119,15 @@
         },
         "10": {
             "title": "The Dawn of Everything",
-            "quantity": 93,
-            "sold": 10,
-            "description": "A dramatically new understanding of human history, challenging our most fundamental assumptions about social evolution—from the development of agriculture and cities to the origins of the state, democracy, and inequality—and revealing new possibilities for human emancipation.",
+            "quantity": 72,
+            "sold": 0,
+            "description": "A dramatically new understanding of human history, challenging our most fundamental assumptions about social evolution\u2014from the development of agriculture and cities to the origins of the state, democracy, and inequality\u2014and revealing new possibilities for human emancipation.",
             "price": 16.99,
             "author": "David Graeber",
             "rating": {
-                "total_point": 4,
-                "num_of_review": 1,
-                "average": 4
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "11": {
@@ -185,21 +185,21 @@
         "15": {
             "title": "Becoming",
             "quantity": 70,
-            "sold": 39,
+            "sold": 0,
             "description": "An intimate, powerful, and inspiring memoir by the former First Lady of the United States",
             "price": 11.89,
             "author": "Michelle Obama",
             "rating": {
-                "total_point": 18,
-                "num_of_review": 4,
-                "average": 4.5
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "16": {
             "title": "A Promised Land",
             "quantity": 111,
             "sold": 0,
-            "description": "A riveting, deeply personal account of history in the making—from the president who inspired us to believe in the power of democracy",
+            "description": "A riveting, deeply personal account of history in the making\u2014from the president who inspired us to believe in the power of democracy",
             "price": 14.99,
             "author": "Barack Obama",
             "rating": {
@@ -251,7 +251,7 @@
             "title": "Never Split the Difference",
             "quantity": 85,
             "sold": 0,
-            "description": "A former international hostage negotiator for the FBI offers a new, field-tested approach to high-stakes negotiations—whether in the boardroom or at home.",
+            "description": "A former international hostage negotiator for the FBI offers a new, field-tested approach to high-stakes negotiations\u2014whether in the boardroom or at home.",
             "price": 17.99,
             "author": "Chris Voss & Tahl Raz ",
             "rating": {
@@ -292,14 +292,7 @@
         }
     },
     "order": {
-        "IHSS74D": {
-            "customer_id": "1",
-            "product_id": "10",
-            "quantity": 10,
-            "total_cost": 100.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        }
+
     },
     "return": {
         "order_id": {

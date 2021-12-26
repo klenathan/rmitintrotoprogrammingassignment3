@@ -1,5 +1,4 @@
 from prettytable import PrettyTable
-
 from handle_order import handle_order
 from cls import cls
 from styling import Style
@@ -54,7 +53,7 @@ def search_item(json_data):
 
                 if product_option == "1":
                     handle_order(user_option, json_data)
-                    input("\nPress any key to go back to main menu: ")
+                    input("\nPress any key to exit: ")
                     cls()
                     break
                 elif product_option == "0":
@@ -154,3 +153,20 @@ def query_detail(json_data, user_option):
     print("1. Purchase")
     product_option = input("Do you want to purchase this item? ")
     return product_option
+
+
+def purchase_tracking(json_data):
+    while True:
+        user_option = input(
+            "\nPlease enter your ID to view the purchase history or press 0 to exit: ")
+        try:
+            if int(user_option) == 0:
+                cls()
+                break
+            else:
+                for detail in json_data['customer'][user_option]:
+                    print(
+                        f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
+
+        except Exception as e:
+            print(e)

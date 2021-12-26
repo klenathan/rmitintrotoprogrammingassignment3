@@ -22,16 +22,23 @@ def handle_order(product_id, json_data):
     order_id = random_order_id(json_data)
     order_quantity = int(input("How many books would you like to get? "))
     updated_quantity -= order_quantity
-
+    
     # Check if product's quantity is enough
     if updated_quantity < 0:
         print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
         # Generate customer and order dictionary
-        customer_dict, order_dict, customer_id = handle_data(json_data, product_id, order_quantity)
+        customer_dict, order_dict, customer_id, nested_order_dict = handle_data(json_data, product_id, order_quantity)
         # Write data to database
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
+
+        # create nested dictionary 
+        customer_dict['order'] = {}
+        for order_id in json_data['order']:
+            if json_data['order'][order_id]['customer_id'] in json_data['customer']:
+                customer_dict['order'][order_id] = nested_order_dict
+
         json_data['product'][product_id]['quantity'] = updated_quantity
         json_data['product'][product_id]['sold'] += order_quantity
         json_file = open('data.json', 'w')
@@ -89,9 +96,11 @@ def handle_data(json_data, product_id, order_quantity):
             customer_email = customer_field[customer_id]['email']
             customer_phone = customer_field[customer_id]['phone_num']
             customer_address = customer_field[customer_id]['address']
+
         except Exception as e:
             print(f'Customer id {e} does not exist, press any keys to try again')
             handle_order(product_id, json_data)
+
     # in case he/she does not have the customer ID
     elif purchase_history == "0":
         # customer_field's key is sorted in ascending order,
@@ -109,13 +118,7 @@ def handle_data(json_data, product_id, order_quantity):
     discount_amount = discount(json_data, customer_id)
     total_price = int(order_quantity) * int(json_data["product"][product_id]["price"])
     final_price = total_price * (100 - discount_amount) * 0.01
-    customer_dict = {
-        "id": customer_id,
-        "name": customer_name,
-        "email": customer_email,
-        "phone_num": customer_phone,
-        "address": customer_address
-    }
+
     order_dict = {
         "customer_id": customer_id,
         "product_id": product_id,
@@ -125,8 +128,23 @@ def handle_data(json_data, product_id, order_quantity):
         "reviewed": "False"
     }
     
+    nested_order_dict = {
+        "product_id": product_id,
+        "quantity": int(order_quantity),
+        "total_cost": final_price,
+        "reviewed": "False"
+    }
+
+    customer_dict = {
+        "id": customer_id,
+        "name": customer_name,
+        "email": customer_email,
+        "phone_num": customer_phone,
+        "address": customer_address
+    }
+
     # Display price
     print(f"You've got {discount_amount}% discount!")
     print(f'\nYour total cost is {final_price}$!')
 
-    return customer_dict, order_dict, customer_id
+    return customer_dict, order_dict, customer_id, nested_order_dict

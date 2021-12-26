@@ -1,6 +1,6 @@
 import json
 
-from basic_features import list_all, search_item, search_by_name
+from basic_features import list_all, search_item, search_by_name, purchase_tracking
 from additional_features import return_shipment, handle_review, best_books
 from cls import cls
 
@@ -22,15 +22,13 @@ Check-list:
 1.  List all items #Done -Thu 
 2.  Search item by name #Done - Thu
 3.  Search item by item id #Done - Thu
-4.  List all information of a specific customer
+4.  List all information of a specific customer #Done???
 5.  Placing orders #Done? Thai
 
-6.  Payment management ## In Progress ### ??
-
-7.  Discount # Done - Thu
-8.  Return shipment # Done - Thai
-9. Product review # Done - Thai
-10. Top 5 best-selling books # Thu/Thinh ?
+6.  Discount # Done - Thu
+7.  Return shipment # Done - Thai
+8. Product review # Done - Thai
+9. Best-selling books # Thinh 
 """
 
 
@@ -44,13 +42,13 @@ def user_option():
 
     option = input('''
 Choose one of these options:
-0. Exit                     1. List all items
-2. Search item by name      3. Search item by item id 
-4. Return shipment          5. Review order product
-6. Top 5 best-selling books
+0. Exit                       1. List all items
+2. Search item by name        3. Search item by item id 
+4. Return shipment            5. Review order product
+6. Top 5 best-selling books   7. Track purchase history
 Your option:  ''')
 
-    if option not in ['0', '1', '2', '3', '4', '5', '6']:
+    if option not in ['0', '1', '2', '3', '4', '5', '6', '7']:
         cls()
         print('Wrong input, please try again!')
         option = '-1'
@@ -62,8 +60,8 @@ if __name__ == '__main__':
         while True:
             user = user_option()
             json_data = open_file()
-            # Exit program
             match user:
+                # Exit program
                 case 0:
                     cls()
                     print('\nThank you for visiting our store! Hope to see you again!')
@@ -92,5 +90,10 @@ if __name__ == '__main__':
                 case 6:
                     cls()
                     best_books(json_data)
+                # Track purchase history
+                case 7: 
+                    cls()
+                    purchase_tracking(json_data)
+
     except KeyboardInterrupt:
         cls()
