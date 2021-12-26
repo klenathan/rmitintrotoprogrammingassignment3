@@ -1,19 +1,19 @@
 import json
 
 from basic_features import list_all, search_item, search_by_name
-from additional_features import best_books, return_shipment, handle_review, best_books
+from additional_features import return_shipment, handle_review, best_books
 from cls import cls
 
 
 def open_file():
     """
-    The functions opens the json file
+    The function opens the json file
     :param: None
-    :return: None
+    :return: data: dictionary containing all data from database (dict)
     """
     with open('data.json', 'r+') as json_file:
-        json_data = json.load(json_file)
-        return json_data
+        data = json.load(json_file)
+        return data
 
 
 """
@@ -50,7 +50,7 @@ Choose one of these options:
 6. Top 3 best-selling books
 Your option:  ''')
 
-    if(option not in ['0', '1', '2', '3', '4', '5', '6']):
+    if option not in ['0', '1', '2', '3', '4', '5', '6']:
         cls()
         print('Wrong input, please try again!')
         option = '-1'

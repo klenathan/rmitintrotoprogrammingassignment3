@@ -1,7 +1,7 @@
 import json
 import string
 import random
-from styling import style
+from styling import Style
 
 from additional_features import discount
 
@@ -14,7 +14,7 @@ def handle_order(product_id, json_data):
     logs new customer data.
 
     :param: 
-        product_id: product id that need to be handle (str)
+        product_id: product id that need to be handled (str)
         json_data: dictionary containing all data from database (dict)
     :return: None
     """
@@ -37,7 +37,7 @@ def handle_order(product_id, json_data):
         json_file = open('data.json', 'w')
         json.dump(json_data, json_file, indent=4)
 
-        print(f"\nYour order number is: {style.BOLD}{order_id}{style.END}\nPlease note for later use")
+        print(f"\nYour order number is: {Style.BOLD}{order_id}{Style.END}\nPlease note for later use")
 
 
 def random_order_id(json_data):
@@ -50,7 +50,8 @@ def random_order_id(json_data):
     :return:
         random_id: 7 characters id (str)
     """
-    random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7)) # Modify 'k' for number of random_id character 
+    # Modify 'k' for number of random_id character
+    random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
 
     if json_data['order'] == {}:
         return random_id
@@ -64,7 +65,7 @@ def random_order_id(json_data):
 
 def handle_data(json_data, product_id, order_quantity):
     """
-    The function generates customer information dictionary and new order dictinary
+    The function generates customer information dictionary and new order dictionary
     :param:
         json_data: dictionary containing all information (dict)
         product_id: product id of product being product (str)
@@ -89,17 +90,17 @@ def handle_data(json_data, product_id, order_quantity):
             customer_phone = customer_field[customer_id]['phone_num']
             customer_address = customer_field[customer_id]['address']
         except Exception as e:
-            print(f'Customer id {e} does not exist, press anykey to try again')
+            print(f'Customer id {e} does not exist, press any keys to try again')
             handle_order(product_id, json_data)
     # in case he/she does not have the customer ID
     elif purchase_history == "0":
-        # customer_field's key is sorted ascendingly, 
+        # customer_field's key is sorted in ascending order,
         # max id would be the last value from the json_data['customer'] list
         max_id = int(list(customer_field)[-1])
-        customer_id = str(max_id + 1) # Create new customer_id by add 1 to max id
+        customer_id = str(max_id + 1)  # Create new customer_id by add 1 to max id
         print("\n")
         customer_name = input("Name: ")
-        customer_email = input("Email adress: ")
+        customer_email = input("Email address: ")
         customer_phone = input("Phone number: ")
         customer_address = input("Shipping address: ")
     else:
@@ -123,7 +124,7 @@ def handle_data(json_data, product_id, order_quantity):
         "reviewed": "False"
     }
     
-    #Display price
+    # Display price
     print(f"You've got {discount(json_data, customer_id)}% discount!")
     print(f'\nYour total cost is {final_price}$!')
 

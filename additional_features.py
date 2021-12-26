@@ -1,6 +1,5 @@
 import json
 from cls import cls
-from styling import style
 
 
 def handle_review(json_data):
@@ -31,14 +30,12 @@ def handle_review(json_data):
                     print(f'Bought quantity: {json_data["order"][order_id]["quantity"]}')
 
                     user_review = int(input("\nHow do you rate the product from 1 to 5? "))
-                    if user_review > 5:
-                        user_review == 5
-                    elif user_review < 1:
-                        user_review == 1
-
-                    total_point += user_review
-                    num_of_review += 1
-                    average_point = total_point/num_of_review
+                    average_point = 0
+                    if user_review <= 5:
+                        if user_review >= 1:
+                            total_point += user_review
+                            num_of_review += 1
+                            average_point = total_point/num_of_review
 
                     rating_dict = {
                         "total_point": total_point,
@@ -67,10 +64,9 @@ def discount(json_data, customer_id_input):
         json_data: dictionary containing all data from database (dict)
         customer_id_input: customer_id of the purchasing customer (str)
     :return:
-        discount: calculated discount rate (int)
+        discount_rate: calculated discount rate (int)
     """
-    discount = 0
-    total_items = 0
+    discount_rate = 0
 
     for order_id in json_data['order']:
         customer_id = json_data['order'][order_id]['customer_id']
@@ -78,12 +74,12 @@ def discount(json_data, customer_id_input):
             total_items = int(json_data['order'][order_id]['quantity'])
             
             if total_items >= 10:
-                discount = 10
+                discount_rate = 10
             elif total_items >= 5:
-                discount = 5
+                discount_rate = 5
             elif total_items >= 3:
-                discount = 3
-    return discount
+                discount_rate = 3
+    return discount_rate
 
 
 def return_shipment(json_data):
@@ -108,8 +104,8 @@ def return_shipment(json_data):
                         }
                         json_file = open('data.json', 'w')
                         json.dump(json_data, json_file, indent=4)
-                        print('\nSorry for your inconvinient.\nWe will process your request as soon as possible')
-                        input("Press any key to bo gack: ")
+                        print('\nSorry for your inconvenience.\nWe will process your request as soon as possible')
+                        input("Press any key to go back: ")
 
                         cls()
                         break
@@ -117,7 +113,7 @@ def return_shipment(json_data):
             print(f'Order {e} does not exist')
             print("\n0. Exit")
             print("1. Try again")
-            if input("Press 0 to exit, 1 to try again ") == "0":
+            if input("Type 0 to go back to main menu, any other key to try again ") == "0":
                 cls()
                 break
 
@@ -131,11 +127,13 @@ def best_books(json_data):
     """
     sold_lst = []
     
-    for id in json_data['product']:
-        sold_lst.append(json_data['product'][id]['sold'])
+    for book_id in json_data['product']:
+        sold_lst.append(json_data['product'][book_id]['sold'])
     sold_lst.sort(reverse=True)
-    best_books = sold_lst[:3]
+    book_lst = sold_lst[:3]
 
     for detail in json_data['product']:
-        if json_data['product'][detail]['sold'] in best_books:
+        if json_data['product'][detail]['sold'] in book_lst:
             print(json_data['product'][detail])
+    input('\nPress any keys to return to the main menu ')
+    cls()

@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 
 from handle_order import handle_order
 from cls import cls
-from styling import style
+from styling import Style
 
 
 def list_all(json_data):
@@ -95,10 +95,12 @@ def search_by_name(json_data):
                         for detail in json_data['product'][product_id]:
                             if detail == "rating":
                                 print(
-                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][product_id][detail]["average"]:.2f}')
+                                    f'{Style.BOLD}{detail:15}{Style.END}: '
+                                    f'{json_data["product"][product_id][detail]["average"]:.2f}')
                             else:
                                 print(
-                                    f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][product_id][detail]}')
+                                    f'{Style.BOLD}{detail:15}{Style.END}: '
+                                    f'{json_data["product"][product_id][detail]}')
                         print("\n0. Exit")
                         print("1. Purchase")
                         product_option = input(
@@ -132,10 +134,10 @@ def query_detail(json_data, user_option):
     for detail in json_data['product'][user_option]:
         if detail == "rating":
             print(
-                f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
+                f'{Style.BOLD}{detail:15}{Style.END}: {json_data["product"][user_option][detail]["average"]:.2f}')
         else:
             print(
-                f'{style.BOLD}{detail:15}{style.END}: {json_data["product"][user_option][detail]}')
+                f'{Style.BOLD}{detail:15}{Style.END}: {json_data["product"][user_option][detail]}')
 
     print("\n0. Exit")
     print("1. Purchase")

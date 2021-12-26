@@ -1,12 +1,14 @@
 import platform
 import os
 
+
 def cls():
-    '''
+    """
     The function clears console/terminal based on the user's operating system
     :param: None
     :return: clear  
-    '''
+    """
+    clear = ''
     if platform.system() == 'Windows':
         clear = os.system('cls')
     elif platform.system() == 'Darwin':
