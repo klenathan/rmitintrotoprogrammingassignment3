@@ -28,13 +28,16 @@ def handle_order(product_id, json_data):
         print(f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
     else:
         # Generate customer and order dictionary
-        customer_dict, order_dict, customer_id, nested_order_dict = handle_data(json_data, product_id, order_quantity)
+        customer_dict, order_dict, customer_id = handle_data(json_data, product_id, order_quantity)
         # Write data to database
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
 
-        # create nested dictionary #??????????????????????????
-        json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
+        # create nested dictionary 
+        for order_id in json_data['order']:
+            for customer_id in json_data['customer']:
+                if json_data['order'][order_id]['customer_id'] == customer_id:
+                    json_data["customer"][customer_id]["order"][order_id] = json_data['order'][order_id]
 
         json_data['product'][product_id]['quantity'] = updated_quantity
         json_data['product'][product_id]['sold'] += order_quantity
@@ -125,13 +128,6 @@ def handle_data(json_data, product_id, order_quantity):
         "reviewed": "False"
     }
     
-    nested_order_dict = {
-        "product_id": product_id,
-        "quantity": int(order_quantity),
-        "total_cost": final_price,
-        "reviewed": "False"
-    }
-
     customer_dict = {
         "id": customer_id,
         "name": customer_name,
@@ -145,4 +141,4 @@ def handle_data(json_data, product_id, order_quantity):
     print(f"You've got {discount_amount}% discount!")
     print(f'\nYour total cost is {final_price}$!')
 
-    return customer_dict, order_dict, customer_id, nested_order_dict
+    return customer_dict, order_dict, customer_id
