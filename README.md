@@ -19,7 +19,7 @@ Jang Soohyuk<br>
 - Best seller product ranking
 - Purchase history (Integrate with list all information from a specific customer)
 ### Json file structure
-``` json
+``` yaml
 data.json
 {
     "product": {
