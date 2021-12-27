@@ -8,9 +8,9 @@
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 9,
+                "num_of_review": 2,
+                "average": 4.5
             }
         },
         "2": {
@@ -21,9 +21,9 @@
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 5,
+                "num_of_review": 1,
+                "average": 5.0
             }
         },
         "3": {
@@ -320,7 +320,7 @@
             "quantity": 1,
             "total_cost": 11.0,
             "customer_address": "01 Main St",
-            "reviewed": "False"
+            "reviewed": "True"
         },
         "7XCSK8X": {
             "customer_id": "2",
@@ -328,7 +328,7 @@
             "quantity": 1,
             "total_cost": 11.0,
             "customer_address": "01 Main St",
-            "reviewed": "False"
+            "reviewed": "True"
         },
         "SAA47KO": {
             "customer_id": "1",
@@ -336,7 +336,7 @@
             "quantity": 1,
             "total_cost": 22.0,
             "customer_address": "01 Main St",
-            "reviewed": "False"
+            "reviewed": "True"
         }
     },
     "return": {

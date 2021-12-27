@@ -49,10 +49,11 @@ def handle_review(json_data):
                     }
                     json_data['product'][product_id]['rating'] = rating_dict
                     json_data["order"][order_id]["reviewed"] = "True"
+
                     json_file = open('data.json', 'w')
                     json.dump(json_data, json_file, indent=4)
-                    input("Thank you for your review, press any key to go back")
                     cls()
+                    print("Thank you for your review, press any key to go back")
                     break
         except Exception as e:
             print(f'Order ID {e} does not exist')
