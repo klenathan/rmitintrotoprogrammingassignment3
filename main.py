@@ -1,9 +1,9 @@
 import json
-
 from basic_features import list_all, search_item, search_by_name, purchase_tracking
 from additional_features import return_shipment, handle_review, best_books
 from cls import cls
 from logo import welcome, bye
+
 
 def open_file():
     """
@@ -14,6 +14,7 @@ def open_file():
     with open('data.json', 'r+', encoding='utf-8') as json_file:
         data = json.load(json_file)
         return data
+
 
 def user_option():
     """
@@ -26,10 +27,10 @@ def user_option():
 
     option = input('''
 Choose one of these options:
-0. Exit                       1. List all items
-2. Search item by name        3. Search item by item id 
-4. Return shipment            5. Review order product
-6. Best-selling books rank    7. Customer information & purchase history
+0. Exit                        1. List all items
+2. Search item by name         3. Search item by item id 
+4. Return shipment             5. Review order product
+6. Best-selling books rank     7. Customer information & purchase history
 Your option:  ''')
 
     if option not in ['0', '1', '2', '3', '4', '5', '6', '7']:

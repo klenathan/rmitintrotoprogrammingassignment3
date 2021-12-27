@@ -1,8 +1,8 @@
 import json
 from cls import cls
-
 from prettytable import PrettyTable
 
+### comment code block di b oi
 def handle_review(json_data):
     """
     The function takes review from customer and write to database
@@ -59,6 +59,7 @@ def handle_review(json_data):
             print(f'Order ID {e} does not exist')
             try_again_opt = input(
                 "Type 0 to go back to main menu, any other key to try again\n")
+
             if try_again_opt == "0":
                 cls()
                 break
@@ -74,18 +75,25 @@ def discount(json_data, customer_id_input):
         discount_rate: calculated discount rate (int)
     """
     discount_rate = 0
-
+    total_items = 0
+    
+    # loop through order dictionary
     for order_id in json_data['order']:
         customer_id = json_data['order'][order_id]['customer_id']
-        if customer_id_input == customer_id:
-            total_items = int(json_data['order'][order_id]['quantity'])
 
-            if total_items >= 10:
+        if customer_id_input == customer_id:
+            # calculate the total books a customer had bought
+            total_items += int(json_data['order'][order_id]['quantity']) 
+
+            # the discount rate is applied for the next order 
+            # if the total items meet the requirement
+            if total_items >= 50:
                 discount_rate = 10
-            elif total_items >= 5:
+            elif total_items >= 40:
                 discount_rate = 5
-            elif total_items >= 3:
+            elif total_items >= 30:
                 discount_rate = 3
+
     return discount_rate
 
 
@@ -129,7 +137,7 @@ def return_shipment(json_data):
 
 def best_books(json_data):
     """
-    The function displays best-selling books
+    The function displays best-selling books rank
     :param: 
         json_data: dictionary containing all data from database (dict)
     :return: None
@@ -145,7 +153,6 @@ def best_books(json_data):
             table.align = 'l'
 
             for id in sorted_sold:
-                # print(f'id: {id} sold: {json_data["product"][id]["sold"]}')
                 table.add_row([
                     id,
                     json_data['product'][id]['title'],

@@ -2,10 +2,10 @@ import json
 import string
 import random
 from styling import Style
-
 from additional_features import discount
 
 
+### comment code block di b oi
 def handle_order(product_id, json_data):
     """
     The function handles product order event. 
@@ -29,23 +29,29 @@ def handle_order(product_id, json_data):
     else:
         # Generate customer and order dictionary
         customer_dict, order_dict, customer_id = handle_data(json_data, product_id, order_quantity)
+                    
         # Write data to database
         json_data['customer'][customer_id] = customer_dict
         json_data['order'][order_id] = order_dict
+        json_data['product'][product_id]['quantity'] = updated_quantity
+        json_data['product'][product_id]['sold'] += order_quantity
 
+        ### b add review vo day nua
         # create nested dictionary 
         for order_id in json_data['order']:
             for customer_id in json_data['customer']:
                 order_field = json_data['order'][order_id]
+
+                # copy order dictionary and remove customer_id, customer_address
                 new_dict = order_field.copy()
                 remove_key = ['customer_id', 'customer_address']
                 for k in remove_key:
                     new_dict.pop(k)
+
+                # add new dictionary to the customer dictionary
                 if json_data['order'][order_id]['customer_id'] == customer_id:
                     json_data["customer"][customer_id]["order"][order_id] = new_dict
 
-        json_data['product'][product_id]['quantity'] = updated_quantity
-        json_data['product'][product_id]['sold'] += order_quantity
         json_file = open('data.json', 'w')
         json.dump(json_data, json_file, indent=4)
 
