@@ -82,6 +82,7 @@ def search_by_name(json_data):
         book_name = input(
             "\nPlease enter the book title or press 0 to return to the main menu: ")
         if book_name == "0":
+            cls()
             break
         else:
             try:

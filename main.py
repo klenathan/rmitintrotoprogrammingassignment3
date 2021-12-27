@@ -3,7 +3,7 @@ import json
 from basic_features import list_all, search_item, search_by_name, purchase_tracking
 from additional_features import return_shipment, handle_review, best_books
 from cls import cls
-
+from logo import welcome, bye
 
 def open_file():
     """
@@ -22,6 +22,7 @@ def user_option():
     :return: 
         option: user option from 0 to 6 (int)
     """
+    print(welcome)
 
     option = input('''
 Choose one of these options:
@@ -47,7 +48,7 @@ if __name__ == '__main__':
                 # Exit program
                 case 0:
                     cls()
-                    print('\nThank you for visiting our store! Hope to see you again!')
+                    print(bye)
                     exit(0)
                 # List items and get info of a specific item
                 case 1:
