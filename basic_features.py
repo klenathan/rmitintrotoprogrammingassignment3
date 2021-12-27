@@ -164,9 +164,13 @@ def purchase_tracking(json_data):
             else:
                 for detail in json_data['customer'][user_option]:
                     if detail == "order":
-                        print(f"{Style.BOLD}Order list{Style.END}:")
-                        for order in json_data['customer'][user_option]["order"]:
-                            print(f'{order}')
+                        print(f"{Style.BOLD}order list{Style.END}:")
+                        for order_id in json_data['customer'][user_option]["order"]:
+                            print('\n')
+                            print(f'{Style.BLUE}{order_id:12}{Style.END}')
+                            for order_detail in json_data['customer'][user_option]['order'][order_id]:
+                                print(
+                                    f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')                    
                     else:
                         print(
                             f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')

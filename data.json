@@ -2,28 +2,28 @@
     "product": {
         "1": {
             "title": "Atomic Habits",
-            "quantity": 178,
-            "sold": 2,
+            "quantity": 171,
+            "sold": 0,
             "description": "An Easy & Proven Way to Build Good Habits & Break Bad OnesAn Easy & Proven Way to Build Good Habits & Break Bad Ones",
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 9,
-                "num_of_review": 2,
-                "average": 4.5
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "2": {
             "title": "The 1619 Project",
-            "quantity": 155,
-            "sold": 1,
+            "quantity": 151,
+            "sold": 0,
             "description": "A New Origin Story",
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
-                "total_point": 5,
-                "num_of_review": 1,
-                "average": 5.0
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "3": {
@@ -54,7 +54,7 @@
         },
         "5": {
             "title": "Atlas of the Heart",
-            "quantity": 113,
+            "quantity": 112,
             "sold": 0,
             "description": "Mapping Meaningful Connection and the Language of Human Experience",
             "price": 18.34,
@@ -119,7 +119,7 @@
         },
         "10": {
             "title": "The Dawn of Everything",
-            "quantity": 72,
+            "quantity": 71,
             "sold": 0,
             "description": "A dramatically new understanding of human history, challenging our most fundamental assumptions about social evolution\u2014from the development of agriculture and cities to the origins of the state, democracy, and inequality\u2014and revealing new possibilities for human emancipation.",
             "price": 16.99,
@@ -268,24 +268,7 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "Z4EGCEZ": {
-                    "customer_id": "1",
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.0,
-                    "customer_address": "01 Main St",
-                    "reviewed": "False"
-                },
-                "SAA47KO": {
-                    "customer_id": "1",
-                    "product_id": "2",
-                    "quantity": 1,
-                    "total_cost": 22.0,
-                    "customer_address": "01 Main St",
-                    "reviewed": "False"
-                }
-            }
+            "order": {}
         },
         "2": {
             "id": "2",
@@ -293,16 +276,7 @@
             "email": "person2@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "7XCSK8X": {
-                    "customer_id": "2",
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.0,
-                    "customer_address": "01 Main St",
-                    "reviewed": "False"
-                }
-            }
+            "order": {}
         },
         "3": {
             "id": "3",
@@ -314,30 +288,6 @@
         }
     },
     "order": {
-        "Z4EGCEZ": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.0,
-            "customer_address": "01 Main St",
-            "reviewed": "True"
-        },
-        "7XCSK8X": {
-            "customer_id": "2",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.0,
-            "customer_address": "01 Main St",
-            "reviewed": "True"
-        },
-        "SAA47KO": {
-            "customer_id": "1",
-            "product_id": "2",
-            "quantity": 1,
-            "total_cost": 22.0,
-            "customer_address": "01 Main St",
-            "reviewed": "True"
-        }
     },
     "return": {
         "order_id": {
