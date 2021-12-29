@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
-from handle_order import handle_order
-from cls import cls
-from styling import Style
+from components.handle_order import handle_order
+from components.cls import cls
+from components.styling import Style
 
 
 def list_all(json_data):

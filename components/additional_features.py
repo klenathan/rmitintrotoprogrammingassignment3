@@ -1,5 +1,5 @@
 import json
-from cls import cls
+from components.cls import cls
 from prettytable import PrettyTable
 
 # comment code block di b oi ## khum
@@ -54,7 +54,7 @@ def handle_review(json_data):
                     json_data['product'][product_id]['rating'] = rating_dict
                     json_data["order"][order_id]["reviewed"] = "True"
 
-                    json_file = open('data.json', 'w')
+                    json_file = open('data/data.json', 'w')
                     json.dump(json_data, json_file, indent=4)
                     cls()
                     print("Thank you for your review, press any key to go back")
@@ -122,7 +122,7 @@ def return_shipment(json_data):
                             "customer_name": customer_name,
                             "reason_of_return": return_reason
                         }
-                        json_file = open('data.json', 'w')
+                        json_file = open('data/data.json', 'w')
                         json.dump(json_data, json_file, indent=4)
                         print(
                             '\nSorry for your inconvenience.\nWe will process your request as soon as possible')

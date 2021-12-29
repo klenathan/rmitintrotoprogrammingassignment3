@@ -1,8 +1,8 @@
 import json
 import string
 import random
-from styling import Style
-from additional_features import discount
+from components.styling import Style
+from components.additional_features import discount
 
 def handle_order(product_id, json_data):
     """
@@ -49,7 +49,7 @@ def handle_order(product_id, json_data):
                 if json_data['order'][order_id]['customer_id'] == customer_id:
                     json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
 
-        json_file = open('data.json', 'w')
+        json_file = open('data/data.json', 'w')
         json.dump(json_data, json_file, indent=4)
 
         print(f"\nYour order number is: {Style.BOLD}{order_id}{Style.END}\nPlease note for later use")

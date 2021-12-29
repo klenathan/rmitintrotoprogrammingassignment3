@@ -1,8 +1,8 @@
 import json
-from basic_features import list_all, search_item, search_by_name, purchase_tracking
-from additional_features import return_shipment, handle_review, best_books
-from cls import cls
-from logo import welcome, bye
+from components.basic_features import list_all, search_item, search_by_name, purchase_tracking
+from components.additional_features import return_shipment, handle_review, best_books
+from components.cls import cls
+from components.logo import welcome, bye
 
 
 def open_file():
@@ -11,7 +11,7 @@ def open_file():
     :param: None
     :return: data: dictionary containing all data from database (dict)
     """
-    with open('data.json', 'r+', encoding='utf-8') as json_file:
+    with open('data/data.json', 'r+', encoding='utf-8') as json_file:
         data = json.load(json_file)
         return data
 
