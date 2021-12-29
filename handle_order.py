@@ -43,14 +43,14 @@ def handle_order(product_id, json_data):
                 order_field = json_data['order'][order_id]
 
                 # copy order dictionary and remove customer_id, customer_address
-                new_dict = order_field.copy()
-                remove_key = ['customer_id', 'customer_address']
+                nested_order_dict = order_field.copy()
+                remove_key = ['customer_id', 'customer_address', 'reviewed']
                 for k in remove_key:
-                    new_dict.pop(k)
+                    nested_order_dict.pop(k)
 
                 # add new dictionary to the customer dictionary
                 if json_data['order'][order_id]['customer_id'] == customer_id:
-                    json_data["customer"][customer_id]["order"][order_id] = new_dict
+                    json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
 
         json_file = open('data.json', 'w')
         json.dump(json_data, json_file, indent=4)
