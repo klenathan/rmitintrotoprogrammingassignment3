@@ -3,6 +3,7 @@ from components.basic_features import list_all, search_item, search_by_name, pur
 from components.additional_features import return_shipment, handle_review, best_books
 from components.cls import cls
 from components.logo import welcome, bye
+from components.faq import faq
 
 
 def open_file():
@@ -33,10 +34,10 @@ Choose one of these options:
 3. Search item by item id       4. Customer information & purchase history
 
 5. Return shipment              6. Review order product
-7. Best-selling books rank     
+7. Best-selling books rank      8. Customer Service (FAQ)
 Your option:  ''')
 
-    if option not in ['0', '1', '2', '3', '4', '5', '6', '7']:
+    if option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8']:
         cls()
         print('Wrong input, please try again!')
         option = '-1'
@@ -82,7 +83,8 @@ if __name__ == '__main__':
                 case 7:
                     cls()
                     best_books(json_data)
-                
-
+                case 8:
+                    cls()
+                    faq()
     except KeyboardInterrupt:
         cls()
