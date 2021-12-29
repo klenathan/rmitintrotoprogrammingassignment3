@@ -2,7 +2,7 @@ import json
 from cls import cls
 from prettytable import PrettyTable
 
-### comment code block di b oi
+# comment code block di b oi ## khum
 def handle_review(json_data):
     """
     The function takes review from customer and write to database
@@ -36,11 +36,15 @@ def handle_review(json_data):
                     user_review = int(
                         input("\nHow do you rate the product from 1 to 5? "))
                     average_point = 0
-                    if user_review <= 5:
-                        if user_review >= 1:
-                            total_point += user_review
-                            num_of_review += 1
-                            average_point = total_point/num_of_review
+
+                    if user_review > 5:
+                        user_review = 5
+                    elif user_review < 1:
+                        user_review = 1
+
+                    total_point += user_review
+                    num_of_review += 1
+                    average_point = total_point/num_of_review
 
                     rating_dict = {
                         "total_point": total_point,
@@ -76,16 +80,16 @@ def discount(json_data, customer_id_input):
     """
     discount_rate = 0
     total_items = 0
-    
+
     # loop through order dictionary
     for order_id in json_data['order']:
         customer_id = json_data['order'][order_id]['customer_id']
 
         if customer_id_input == customer_id:
             # calculate the total books a customer had bought
-            total_items += int(json_data['order'][order_id]['quantity']) 
+            total_items += int(json_data['order'][order_id]['quantity'])
 
-            # the discount rate is applied for the next order 
+            # the discount rate is applied for the next order
             # if the total items meet the requirement
             if total_items >= 50:
                 discount_rate = 10
@@ -158,7 +162,7 @@ def best_books(json_data):
                     json_data['product'][id]['title'],
                     json_data['product'][id]['author'],
                     json_data['product'][id]['quantity'],
-                    json_data['product'][id]['price'], 
+                    json_data['product'][id]['price'],
                     f'{json_data["product"][id]["rating"]["average"]:.2f}',
                     json_data['product'][id]['sold'],
                 ])

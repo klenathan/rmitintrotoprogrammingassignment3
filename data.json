@@ -8,35 +8,35 @@
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 10,
+                "num_of_review": 2,
+                "average": 5.0
             }
         },
         "2": {
             "title": "The 1619 Project",
-            "quantity": 151,
-            "sold": 0,
+            "quantity": 150,
+            "sold": 1,
             "description": "A New Origin Story",
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 5,
+                "num_of_review": 1,
+                "average": 5.0
             }
         },
         "3": {
             "title": "Will",
-            "quantity": 134,
-            "sold": 0,
+            "quantity": 133,
+            "sold": 1,
             "description": "Will Smith\u2019s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale\u2014but it\u2019s only half the story.",
             "price": 19,
             "author": "Will Smith & Mark Manson",
             "rating": {
-                "total_point": 0,
-                "num_of_review": 0,
-                "average": 0
+                "total_point": 5,
+                "num_of_review": 1,
+                "average": 5.0
             }
         },
         "4": {
@@ -273,6 +273,11 @@
                     "product_id": "1",
                     "quantity": 1,
                     "total_cost": 11.0
+                },
+                "PXW1K5J": {
+                    "product_id": "3",
+                    "quantity": 1,
+                    "total_cost": 19.0
                 }
             }
         },
@@ -282,7 +287,13 @@
             "email": "person2@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {}
+            "order": {
+                "W2I08WZ": {
+                    "product_id": "2",
+                    "quantity": 1,
+                    "total_cost": 22.0
+                }
+            }
         },
         "3": {
             "id": "3",
@@ -300,7 +311,23 @@
             "quantity": 1,
             "total_cost": 11.0,
             "customer_address": "01 Main St",
+            "reviewed": "True"
+        },
+        "W2I08WZ": {
+            "customer_id": "2",
+            "product_id": "2",
+            "quantity": 1,
+            "total_cost": 22.0,
+            "customer_address": "01 Main St",
             "reviewed": "False"
+        },
+        "PXW1K5J": {
+            "customer_id": "1",
+            "product_id": "3",
+            "quantity": 1,
+            "total_cost": 19.0,
+            "customer_address": "01 Main St",
+            "reviewed": "True"
         }
     },
     "return": {

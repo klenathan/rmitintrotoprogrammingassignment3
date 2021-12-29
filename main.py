@@ -27,10 +27,13 @@ def user_option():
 
     option = input('''
 Choose one of these options:
-0. Exit                        1. List all items
-2. Search item by name         3. Search item by item id 
-4. Return shipment             5. Review order product
-6. Best-selling books rank     7. Customer information & purchase history
+0. Exit
+                   
+1. List all items               2. Search item by name
+3. Search item by item id       4. Customer information & purchase history
+
+5. Return shipment              6. Review order product
+7. Best-selling books rank     
 Your option:  ''')
 
     if option not in ['0', '1', '2', '3', '4', '5', '6', '7']:
@@ -63,22 +66,23 @@ if __name__ == '__main__':
                 case 3:
                     cls()
                     search_item(json_data)
-                # Return shipment
+                # Track purchase history
                 case 4:
+                    cls()
+                    purchase_tracking(json_data)
+                # Return shipment
+                case 5:
                     cls()
                     return_shipment(json_data)
                 # Review
-                case 5: 
+                case 6:
                     cls()
                     handle_review(json_data)
                 # Best-selling books
-                case 6:
+                case 7:
                     cls()
                     best_books(json_data)
-                # Track purchase history
-                case 7: 
-                    cls()
-                    purchase_tracking(json_data)
+                
 
     except KeyboardInterrupt:
         cls()

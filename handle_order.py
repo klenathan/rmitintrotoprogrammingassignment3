@@ -4,8 +4,6 @@ import random
 from styling import Style
 from additional_features import discount
 
-
-### comment code block di b oi
 def handle_order(product_id, json_data):
     """
     The function handles product order event. 
@@ -35,8 +33,7 @@ def handle_order(product_id, json_data):
         json_data['order'][order_id] = order_dict
         json_data['product'][product_id]['quantity'] = updated_quantity
         json_data['product'][product_id]['sold'] += order_quantity
-
-        ### b add review vo day nua
+        
         # create nested dictionary 
         for order_id in json_data['order']:
             for customer_id in json_data['customer']:
