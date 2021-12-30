@@ -112,24 +112,22 @@ def return_shipment(json_data):
     while True:
         try:
             order_id = input("\nPlease input your order id: ")
-            if json_data['order'][order_id]:
-                for i in json_data['order']:
-                    if i == order_id:
-                        customer_name = input("What is the buyer's name? ")
-                        return_reason = input(
-                            "What is your reason of return? ")
-                        json_data['return'][order_id] = {
-                            "customer_name": customer_name,
-                            "reason_of_return": return_reason
-                        }
-                        json_file = open('data/data.json', 'w')
-                        json.dump(json_data, json_file, indent=4)
-                        print(
-                            '\nSorry for your inconvenience.\nWe will process your request as soon as possible')
-                        input("Press any key to go back: ")
-
-                        cls()
-                        break
+            for i in json_data['order']:
+                if i == order_id:
+                    return_reason = input(
+                        "What is your reason of return? ")
+                    json_data['return'][order_id] = json_data['order'][order_id].copy()
+                    json_data['return'][order_id].pop("reviewed")
+                    json_data['return'][order_id]["reason_of_return"] = return_reason
+                    json_data['order'].pop(order_id)
+                    # Write to data file
+                    json_file = open('data/data.json', 'w')
+                    json.dump(json_data, json_file, indent=4)
+                    cls()
+                    print(
+                        '\nSorry for your inconvenience.\nWe will process your request as soon as possible')
+                    break
+            break
         except Exception as e:
             print(f'Order {e} does not exist')
             print("\n0. Exit")

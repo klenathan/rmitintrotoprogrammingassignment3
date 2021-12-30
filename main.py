@@ -5,6 +5,19 @@ from components.cls import cls
 from components.logo import welcome, bye
 from components.faq import faq
 
+#### note
+'''
+Video content           
+1. List all items # Thai          
+2. Search item by name # chia 2 
+3. Search item by item id # chia 2 
+4. Customer information & purchase history #Thu
+
+5. Return shipment            
+6. Review order product # 
+7. Best-selling books rank #Thinh      
+8. Customer Service (FAQ) # Soohyuk
+Your option:  '''
 
 def open_file():
     """

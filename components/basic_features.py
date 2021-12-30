@@ -107,7 +107,7 @@ def search_by_name(json_data):
                     title = json_data['product'][product_id]["title"]
 
                     # in case the user input is valid
-                    if title == book_name:
+                    if title.lower() == book_name.lower():
                         product_exist += 1
 
                         # loop through each nested product dictionary to print out all information
@@ -210,12 +210,11 @@ def purchase_tracking(json_data):
                 for detail in json_data['customer'][user_option]:
 
                     if detail == "order":
-                        print(f"{Style.BOLD}order list{Style.END}:")
+                        print(f"\n{Style.BOLD}order list{Style.END}:")
 
                         # loop through the nested order dictionary 
                         for order_id in json_data['customer'][user_option]["order"]:
-                            print('\n')
-                            print(f'{Style.BLUE}{order_id:12}{Style.END}')
+                            print(f'\n{Style.BLUE}{order_id:12}{Style.END}')
 
                             # loop through the nested order dictionary to print out all order information
                             for order_detail in json_data['customer'][user_option]['order'][order_id]:

@@ -51,7 +51,6 @@ def handle_order(product_id, json_data):
 
         json_file = open('data/data.json', 'w')
         json.dump(json_data, json_file, indent=4)
-
         print(f"\nYour order number is: {Style.BOLD}{order_id}{Style.END}\nPlease note for later use")
 
 
@@ -120,6 +119,7 @@ def handle_data(json_data, product_id, order_quantity):
         customer_email = input("Email address: ")
         customer_phone = input("Phone number: ")
         customer_address = input("Shipping address: ")
+        print(f'\nYour custumer ID is {Style.BOLD}{customer_id}{Style.END}')
     else:
         handle_order(product_id, json_data)
 
