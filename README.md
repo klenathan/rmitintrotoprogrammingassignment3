@@ -56,7 +56,6 @@ data.json
     },
     "order": {
         order_id: {
-            "id": order_id,
             "customer_id": customer_id,
             "product_id": product_id,
             "customer_address": customer_address,
@@ -66,8 +65,12 @@ data.json
         }
     },
     "return": {
-        "order_id": {
-            "customer name": customer_name,
+        order_id: {
+            "customer_id": customer_id,
+            "product_id": product_id,
+            "quantity": bought_quantity,
+            "total_cost": total_cost,
+            "customer_address": customer_address,
             "reason of return": reason
         }
     }
