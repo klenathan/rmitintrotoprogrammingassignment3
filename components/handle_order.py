@@ -147,7 +147,6 @@ def handle_data(json_data, product_id, order_quantity):
 
     # Display price
     print(f"You've got {discount_amount}% discount!")
-    print(f'total price {total_price}')
     print(f'\nYour total cost is {final_price}$!')
 
     return customer_dict, order_dict, customer_id
