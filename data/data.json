@@ -8,8 +8,8 @@
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 10,
-                "num_of_review": 2,
+                "total_point": 15,
+                "num_of_review": 3,
                 "average": 5.0
             }
         },
@@ -268,8 +268,7 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-            }
+            "order": {}
         },
         "2": {
             "id": "2",
@@ -310,6 +309,5 @@
             "reviewed": "True"
         }
     },
-    "return": {
-    }
+    "return": {}
 }

@@ -2,7 +2,7 @@ import json
 from components.cls import cls
 from prettytable import PrettyTable
 
-# comment code block di b oi ## khum
+
 def handle_review(json_data):
     """
     The function takes review from customer and write to database
@@ -13,7 +13,11 @@ def handle_review(json_data):
     while True:
         try:
             order_id = input("What was your order id? ")
+            # Check if order exist 
             if json_data["order"][order_id]:
+                # Check if order is reviewed
+                # If order is reviwed, customer go back to main menu
+                # Else, forward to review process
                 if json_data["order"][order_id]["reviewed"] != "False":
                     print("The order has been rated")
                     user_opt = input(
@@ -37,28 +41,27 @@ def handle_review(json_data):
                         input("\nHow do you rate the product from 1 to 5? "))
                     average_point = 0
 
-                    if user_review > 5:
-                        user_review = 5
-                    elif user_review < 1:
-                        user_review = 1
+                    if user_review > 5 or user_review < 1:
+                        print('Invalid rating, please try again ')
+                        continue
+                    else:
+                        total_point += user_review
+                        num_of_review += 1
+                        average_point = total_point/num_of_review
 
-                    total_point += user_review
-                    num_of_review += 1
-                    average_point = total_point/num_of_review
+                        rating_dict = {
+                            "total_point": total_point,
+                            "num_of_review": num_of_review,
+                            "average": average_point
+                        }
+                        json_data['product'][product_id]['rating'] = rating_dict
+                        json_data["order"][order_id]["reviewed"] = "True"
 
-                    rating_dict = {
-                        "total_point": total_point,
-                        "num_of_review": num_of_review,
-                        "average": average_point
-                    }
-                    json_data['product'][product_id]['rating'] = rating_dict
-                    json_data["order"][order_id]["reviewed"] = "True"
-
-                    json_file = open('data/data.json', 'w')
-                    json.dump(json_data, json_file, indent=4)
-                    cls()
-                    print("Thank you for your review, press any key to go back")
-                    break
+                        json_file = open('data/data.json', 'w')
+                        json.dump(json_data, json_file, indent=4)
+                        cls()
+                        print("Thank you for your review, press any key to go back")
+                        break
         except Exception as e:
             print(f'Order ID {e} does not exist')
             try_again_opt = input(
