@@ -15,8 +15,8 @@
         },
         "2": {
             "title": "The 1619 Project",
-            "quantity": 150,
-            "sold": 1,
+            "quantity": 140,
+            "sold": 11,
             "description": "A New Origin Story",
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
@@ -269,21 +269,6 @@
             "phone_num": "0123456789",
             "address": "01 Main St",
             "order": {
-                "NEZ2T0P": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.0
-                },
-                "PXW1K5J": {
-                    "product_id": "3",
-                    "quantity": 1,
-                    "total_cost": 19.0
-                },
-                "5AJGI02": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.0
-                }
             }
         },
         "2": {
@@ -306,7 +291,13 @@
             "email": "person3@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {}
+            "order": {
+                "I4FVKZ5": {
+                    "product_id": "2",
+                    "quantity": 5,
+                    "total_cost": 114.0
+                }
+            }
         }
     },
     "order": {
@@ -320,13 +311,5 @@
         }
     },
     "return": {
-        "24E73RE": {
-            "customer_id": "4",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.0,
-            "customer_address": "123",
-            "reason_of_return": "123"
-        }
     }
 }
