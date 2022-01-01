@@ -107,7 +107,7 @@ def search_by_name(json_data):
                     title = json_data['product'][product_id]["title"]
 
                     # in case the user input is valid
-                    if book_name.lower() in title.lower():
+                    if book_name.lower() == title.lower():
                         product_exist += 1
 
                         # loop through each nested product dictionary to print out all information
