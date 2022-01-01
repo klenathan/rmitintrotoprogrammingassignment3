@@ -2,8 +2,8 @@
     "product": {
         "1": {
             "title": "Atomic Habits",
-            "quantity": 166,
-            "sold": 5,
+            "quantity": 142,
+            "sold": 29,
             "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
             "price": 11.98,
             "author": "James Clear",
@@ -67,8 +67,8 @@
         },
         "6": {
             "title": "The Real Anthony Fauci",
-            "quantity": 97,
-            "sold": 0,
+            "quantity": 96,
+            "sold": 1,
             "description": "Bill Gates, Big Pharma, and the Global War on Democracy and Public Health",
             "price": 19.42,
             "author": "Robert F. Kennedy Jr.",
@@ -268,7 +268,28 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {}
+            "order": {
+                "NEZ2T0P": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.0
+                },
+                "MQQPL8E": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.98
+                },
+                "Z6LVSI4": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.98
+                },
+                "IAPJ3WR": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.98
+                }
+            }
         },
         "2": {
             "id": "2",
@@ -277,10 +298,10 @@
             "phone_num": "0123456789",
             "address": "01 Main St",
             "order": {
-                "W2I08WZ": {
-                    "product_id": "2",
-                    "quantity": 1,
-                    "total_cost": 22.0
+                "1P2TBET": {
+                    "product_id": "1",
+                    "quantity": 10,
+                    "total_cost": 119.8
                 }
             }
         },
@@ -291,10 +312,20 @@
             "phone_num": "0123456789",
             "address": "01 Main St",
             "order": {
-                "I4FVKZ5": {
-                    "product_id": "2",
-                    "quantity": 5,
-                    "total_cost": 114.0
+                "SK42GBD": {
+                    "product_id": "1",
+                    "quantity": 10,
+                    "total_cost": 119.8
+                },
+                "76WWSFJ": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.98
+                },
+                "66050CG": {
+                    "product_id": "6",
+                    "quantity": 1,
+                    "total_cost": 19.42
                 }
             }
         }
@@ -307,6 +338,62 @@
             "total_cost": 11.0,
             "customer_address": "01 Main St",
             "reviewed": "True"
+        },
+        "MQQPL8E": {
+            "customer_id": "1",
+            "product_id": "1",
+            "quantity": 1,
+            "total_cost": 11.98,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "1P2TBET": {
+            "customer_id": "2",
+            "product_id": "1",
+            "quantity": 10,
+            "total_cost": 119.8,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "SK42GBD": {
+            "customer_id": "3",
+            "product_id": "1",
+            "quantity": 10,
+            "total_cost": 119.8,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "Z6LVSI4": {
+            "customer_id": "1",
+            "product_id": "1",
+            "quantity": 1,
+            "total_cost": 11.98,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "76WWSFJ": {
+            "customer_id": "3",
+            "product_id": "1",
+            "quantity": 1,
+            "total_cost": 11.98,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "IAPJ3WR": {
+            "customer_id": "1",
+            "product_id": "1",
+            "quantity": 1,
+            "total_cost": 11.98,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        },
+        "66050CG": {
+            "customer_id": "3",
+            "product_id": "6",
+            "quantity": 1,
+            "total_cost": 19.42,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
         }
     },
     "return": {}
