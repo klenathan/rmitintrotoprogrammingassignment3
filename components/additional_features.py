@@ -13,11 +13,10 @@ def handle_review(json_data):
     while True:
         try:
             order_id = input("What was your order id? ")
-            # Check if order exist 
+            # Check if order exist
             if json_data["order"][order_id]:
                 # Check if order is reviewed
-                # If order is reviwed, customer go back to main menu
-                # Else, forward to review process
+                # If order is reviewed, customer go back to main menu
                 if json_data["order"][order_id]["reviewed"] != "False":
                     print("The order has been rated")
                     user_opt = input(
@@ -25,22 +24,24 @@ def handle_review(json_data):
                     if user_opt == "0":
                         cls()
                         break
+                # Forward to review process
                 else:
                     product_id = json_data["order"][order_id]["product_id"]
                     total_point = json_data["product"][product_id]["rating"]["total_point"]
                     num_of_review = json_data["product"][product_id]["rating"]["num_of_review"]
-
+                    # Print order details to console
                     print("\nOrder details")
                     print(f'Product id: {product_id}')
                     print(
                         f'Book title: {json_data["product"][product_id]["title"]}')
                     print(
                         f'Bought quantity: {json_data["order"][order_id]["quantity"]}')
-
+                    # Get user's review
                     user_review = int(
                         input("\nHow do you rate the product from 1 to 5? "))
                     average_point = 0
 
+                    # Check if review input is valid (in range from 1 to 5)
                     if user_review > 5 or user_review < 1:
                         print('Invalid rating, please try again ')
                         continue
@@ -48,7 +49,7 @@ def handle_review(json_data):
                         total_point += user_review
                         num_of_review += 1
                         average_point = total_point/num_of_review
-
+                        # Update rating dictionary of the product
                         rating_dict = {
                             "total_point": total_point,
                             "num_of_review": num_of_review,
@@ -56,9 +57,10 @@ def handle_review(json_data):
                         }
                         json_data['product'][product_id]['rating'] = rating_dict
                         json_data["order"][order_id]["reviewed"] = "True"
-
+                        # Write data to file
                         json_file = open('data/data.json', 'w')
                         json.dump(json_data, json_file, indent=4)
+                        # Clear console & thank you
                         cls()
                         print("Thank you for your review, press any key to go back")
                         break
@@ -66,7 +68,6 @@ def handle_review(json_data):
             print(f'Order ID {e} does not exist')
             try_again_opt = input(
                 "Type 0 to go back to main menu, any other key to try again\n")
-
             if try_again_opt == "0":
                 cls()
                 break
@@ -111,25 +112,27 @@ def return_shipment(json_data):
         json_data: dictionary containing all data from database (dict)
     :return: None
     """
+    # Clear console
     cls()
     while True:
         try:
             order_id = input("\nPlease input your order id: ")
-            for i in json_data['order']:
-                if i == order_id:
-                    return_reason = input(
-                        "What is your reason of return? ")
-                    json_data['return'][order_id] = json_data['order'][order_id].copy()
-                    json_data['return'][order_id].pop("reviewed")
-                    json_data['return'][order_id]["reason_of_return"] = return_reason
-                    json_data['order'].pop(order_id)
-                    # Write to data file
-                    json_file = open('data/data.json', 'w')
-                    json.dump(json_data, json_file, indent=4)
-                    cls()
-                    print(
-                        '\nSorry for your inconvenience.\nWe will process your request as soon as possible')
-                    break
+            if order_id in json_data['order']:
+                return_reason = input(
+                    "What is your reason of return? ")
+                json_data['return'][order_id] = json_data['order'][order_id].copy()
+                json_data['return'][order_id].pop("reviewed")
+                json_data['return'][order_id]["reason_of_return"] = return_reason
+                json_data['order'].pop(order_id)
+                # Write to data file
+                json_file = open('data/data.json', 'w')
+                json.dump(json_data, json_file, indent=4)
+                cls()
+                print(
+                    '\nSorry for your inconvenience.\nWe will process your request as soon as possible')
+                break
+            else:
+                print("Order does not exist")
             break
         except Exception as e:
             print(f'Order {e} does not exist')

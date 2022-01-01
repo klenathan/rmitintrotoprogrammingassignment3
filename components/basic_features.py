@@ -31,7 +31,7 @@ def list_all(json_data):
                 ])
             print(table)
 
-            # return to the main menu 
+            # return to the main menu
             if search_item(json_data) == "0":
                 break
 
@@ -50,7 +50,7 @@ def search_item(json_data):
         user_option = input(
             "\nPlease enter the product ID to get all information of the item or press 0 to exit: ")
 
-        # return to the main menu if user input is "0" 
+        # return to the main menu if user input is "0"
         if user_option == "0":
             cls()
             return "0"
@@ -93,7 +93,7 @@ def search_by_name(json_data):
     while True:
         book_name = input(
             "\nPlease enter the book title or press 0 to return to the main menu: ")
-        
+
         # return to the main menu if user input is "0"
         if book_name == "0":
             cls()
@@ -198,7 +198,7 @@ def purchase_tracking(json_data):
     while True:
         user_option = input(
             "\nPlease enter your ID to view the purchase history or press 0 to exit: ")
-        
+
         # return to the main menu if the user input is 0
         try:
             if int(user_option) == 0:
@@ -213,15 +213,16 @@ def purchase_tracking(json_data):
                         if detail == "order":
                             print(f"\n{Style.BOLD}order list{Style.END}:")
 
-                            # loop through the nested order dictionary 
+                            # loop through the nested order dictionary
                             for order_id in json_data['customer'][user_option]["order"]:
-                                print(f'\n{Style.BLUE}{order_id:12}{Style.END}')
+                                print(
+                                    f'\n{Style.BLUE}{order_id:12}{Style.END}')
 
                                 # loop through the nested order dictionary to print out all order information
                                 for order_detail in json_data['customer'][user_option]['order'][order_id]:
                                     print(
-                                        f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')   
-                                                        
+                                        f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')
+
                         else:
                             print(
                                 f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
