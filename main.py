@@ -96,6 +96,7 @@ if __name__ == '__main__':
                 case 7:
                     cls()
                     best_books(json_data)
+                # Customer Service (FAQ)
                 case 8:
                     cls()
                     faq()

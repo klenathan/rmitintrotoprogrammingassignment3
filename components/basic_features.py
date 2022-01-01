@@ -200,30 +200,33 @@ def purchase_tracking(json_data):
             "\nPlease enter your ID to view the purchase history or press 0 to exit: ")
         
         # return to the main menu if the user input is 0
-        if int(user_option) == 0:
-            cls()
-            break
-        # in other case
-        else:
-            try:
-                # loop through the customer dictionary that matches user input to print out all customer information
-                for detail in json_data['customer'][user_option]:
+        try:
+            if int(user_option) == 0:
+                cls()
+                break
+            # in other case
+            else:
+                try:
+                    # loop through the customer dictionary that matches user input to print out all customer information
+                    for detail in json_data['customer'][user_option]:
 
-                    if detail == "order":
-                        print(f"\n{Style.BOLD}order list{Style.END}:")
+                        if detail == "order":
+                            print(f"\n{Style.BOLD}order list{Style.END}:")
 
-                        # loop through the nested order dictionary 
-                        for order_id in json_data['customer'][user_option]["order"]:
-                            print(f'\n{Style.BLUE}{order_id:12}{Style.END}')
+                            # loop through the nested order dictionary 
+                            for order_id in json_data['customer'][user_option]["order"]:
+                                print(f'\n{Style.BLUE}{order_id:12}{Style.END}')
 
-                            # loop through the nested order dictionary to print out all order information
-                            for order_detail in json_data['customer'][user_option]['order'][order_id]:
-                                print(
-                                    f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')   
-                                                     
-                    else:
-                        print(
-                            f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
+                                # loop through the nested order dictionary to print out all order information
+                                for order_detail in json_data['customer'][user_option]['order'][order_id]:
+                                    print(
+                                        f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')   
+                                                        
+                        else:
+                            print(
+                                f'{Style.BOLD}{detail:12}{Style.END}: {json_data["customer"][user_option][detail]}')
 
-            except Exception as e:
-                print(f'Customer id {e} does not exist')
+                except Exception as e:
+                    print(f'Customer id {e} does not exist')
+        except Exception as e:
+            print(e)

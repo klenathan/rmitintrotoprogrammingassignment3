@@ -3,40 +3,40 @@
         "1": {
             "title": "Atomic Habits",
             "quantity": 142,
-            "sold": 29,
+            "sold": 0,
             "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
             "price": 11.98,
             "author": "James Clear",
             "rating": {
-                "total_point": 15,
-                "num_of_review": 3,
-                "average": 5.0
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "2": {
             "title": "The 1619 Project",
             "quantity": 140,
-            "sold": 11,
+            "sold": 0,
             "description": "A New Origin Story",
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
             "rating": {
-                "total_point": 5,
-                "num_of_review": 1,
-                "average": 5.0
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "3": {
             "title": "Will",
             "quantity": 133,
-            "sold": 1,
+            "sold": 0,
             "description": "Will Smith\u2019s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale\u2014but it\u2019s only half the story.",
             "price": 19,
             "author": "Will Smith & Mark Manson",
             "rating": {
-                "total_point": 5,
-                "num_of_review": 1,
-                "average": 5.0
+                "total_point": 0,
+                "num_of_review": 0,
+                "average": 0
             }
         },
         "4": {
@@ -68,7 +68,7 @@
         "6": {
             "title": "The Real Anthony Fauci",
             "quantity": 96,
-            "sold": 1,
+            "sold": 0,
             "description": "Bill Gates, Big Pharma, and the Global War on Democracy and Public Health",
             "price": 19.42,
             "author": "Robert F. Kennedy Jr.",
@@ -268,28 +268,7 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "NEZ2T0P": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.0
-                },
-                "MQQPL8E": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.98
-                },
-                "Z6LVSI4": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.98
-                },
-                "IAPJ3WR": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.98
-                }
-            }
+            "order": {}
         },
         "2": {
             "id": "2",
@@ -297,13 +276,7 @@
             "email": "person2@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "1P2TBET": {
-                    "product_id": "1",
-                    "quantity": 10,
-                    "total_cost": 119.8
-                }
-            }
+            "order": {}
         },
         "3": {
             "id": "3",
@@ -311,90 +284,9 @@
             "email": "person3@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "SK42GBD": {
-                    "product_id": "1",
-                    "quantity": 10,
-                    "total_cost": 119.8
-                },
-                "76WWSFJ": {
-                    "product_id": "1",
-                    "quantity": 1,
-                    "total_cost": 11.98
-                },
-                "66050CG": {
-                    "product_id": "6",
-                    "quantity": 1,
-                    "total_cost": 19.42
-                }
-            }
+            "order": {}
         }
     },
-    "order": {
-        "NEZ2T0P": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.0,
-            "customer_address": "01 Main St",
-            "reviewed": "True"
-        },
-        "MQQPL8E": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.98,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "1P2TBET": {
-            "customer_id": "2",
-            "product_id": "1",
-            "quantity": 10,
-            "total_cost": 119.8,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "SK42GBD": {
-            "customer_id": "3",
-            "product_id": "1",
-            "quantity": 10,
-            "total_cost": 119.8,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "Z6LVSI4": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.98,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "76WWSFJ": {
-            "customer_id": "3",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.98,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "IAPJ3WR": {
-            "customer_id": "1",
-            "product_id": "1",
-            "quantity": 1,
-            "total_cost": 11.98,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        },
-        "66050CG": {
-            "customer_id": "3",
-            "product_id": "6",
-            "quantity": 1,
-            "total_cost": 19.42,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        }
-    },
+    "order": {},
     "return": {}
 }
