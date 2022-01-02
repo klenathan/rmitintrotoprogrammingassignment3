@@ -49,7 +49,6 @@ data.json
                     "product_id": product_id,
                     "quantity": bought_quantity,
                     "total_cost": total_cost,
-                    "reviewed": reviewed
                 }
             }
         }
@@ -58,9 +57,9 @@ data.json
         order_id: {
             "customer_id": customer_id,
             "product_id": product_id,
-            "customer_address": customer_address,
             "quantity": bought_quantity,
             "total_cost": total_cost,
+            "customer_address": customer_address,
             "reviewed": reviewed
         }
     },
