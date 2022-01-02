@@ -44,12 +44,12 @@ def handle_order(product_id, json_data):
                         json_data['product'][product_id]['quantity'] = updated_quantity
                         json_data['product'][product_id]['sold'] += order_quantity
 
-                        # create nested dictionary
+                        # loop through order dictionary
                         for order_id in json_data['order']:
                             for customer_id in json_data['customer']:
                                 order_field = json_data['order'][order_id]
 
-                                # copy order dictionary and remove customer_id, customer_address
+                                # copy order dictionary and remove customer_id, customer_address, and reviewed
                                 nested_order_dict = order_field.copy()
                                 remove_key = ['customer_id',
                                             'customer_address', 'reviewed']
@@ -59,6 +59,7 @@ def handle_order(product_id, json_data):
                                 # add new dictionary to the customer dictionary
                                 if json_data['order'][order_id]['customer_id'] == customer_id:
                                     json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
+
                         # Write data to file
                         json_file = open('data/data.json', 'w')
                         json.dump(json_data, json_file, indent=4)
@@ -115,6 +116,7 @@ def handle_data(json_data, product_id, order_quantity):
 
         # in case he/she has the customer ID
         if purchase_history == "1":
+            # check if the customer ID is valid or not
             try:
                 customer_id = input("Please submit your customer ID: ")
                 customer_name = customer_field[customer_id]['name']
@@ -125,7 +127,6 @@ def handle_data(json_data, product_id, order_quantity):
             except Exception as e:
                 print(f'\nCustomer id {e} does not exist, please try again')
                 break
-                handle_order(product_id, json_data)
 
         # in case he/she does not have the customer ID
         elif purchase_history == "0":
@@ -135,21 +136,26 @@ def handle_data(json_data, product_id, order_quantity):
             # Create new customer_id by add 1 to max id
             customer_id = str(max_id + 1)
             print("\n")
+
+            # ask for customer information
             customer_name = input("Name: ")
             customer_email = input("Email address: ")
             customer_phone = input("Phone number: ")
             customer_address = input("Shipping address: ")
             print(
                 f'\nYour customer ID is {Style.BOLD}{customer_id}{Style.END}')
+
         else:
-            # handle_order(product_id, json_data)
             break
 
+        # calculate the final price
         discount_amount = discount(json_data, customer_id)
         total_price = int(order_quantity) * \
             float(json_data["product"][product_id]["price"])
         final_price = total_price * (100 - discount_amount) * 0.01
         final_price = round(final_price, 2)
+
+        # create order dictionary
         order_dict = {
             "customer_id": customer_id,
             "product_id": product_id,
@@ -159,6 +165,7 @@ def handle_data(json_data, product_id, order_quantity):
             "reviewed": "False"
         }
 
+        # create customer dictionary
         customer_dict = {
             "id": customer_id,
             "name": customer_name,

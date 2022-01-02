@@ -9,14 +9,14 @@
             "author": "James Clear",
             "rating": {
                 "total_point": 0,
-                "num_of_review": 0,
+                "num_of_review": 10,
                 "average": 0
             }
         },
         "2": {
             "title": "The 1619 Project",
             "quantity": 135,
-            "sold": 5,
+            "sold": 0,
             "description": "A New Origin Story",
             "price": 22.8,
             "author": "Nikole Hannah-Jones & Martha S. Jones",
@@ -268,13 +268,7 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {
-                "WVKSTPY": {
-                    "product_id": "2",
-                    "quantity": 5,
-                    "total_cost": 114.0
-                }
-            }
+            "order": {}
         },
         "2": {
             "id": "2",
@@ -293,15 +287,6 @@
             "order": {}
         }
     },
-    "order": {
-        "WVKSTPY": {
-            "customer_id": "1",
-            "product_id": "2",
-            "quantity": 5,
-            "total_cost": 114.0,
-            "customer_address": "01 Main St",
-            "reviewed": "False"
-        }
-    },
+    "order": {},
     "return": {}
 }

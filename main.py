@@ -19,6 +19,7 @@ Video content
 8. Customer Service (FAQ) # Soohyuk
 Your option:  '''
 
+
 def open_file():
     """
     The function opens the json file

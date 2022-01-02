@@ -5,7 +5,7 @@ from components.cls import cls
 
 def faq():
     """
-    The function print frequently asked question from faq.json file
+    The function prints frequently asked question from faq.json file
     :param: None
     :return: None
     """
@@ -19,6 +19,6 @@ def faq():
             print(f'{Style.BOLD}{i}. {key}{Style.END}\n- {value}\n')
             i += 1
         
-        input('Press any key to go back')
+        input('Press any key to go back ')
         cls()
         break
