@@ -23,47 +23,50 @@ def handle_order(product_id, json_data):
             order_id = random_order_id(json_data)
             order_quantity = int(
                 input("\nHow many books would you like to get? "))
-            updated_quantity -= order_quantity
-            # Check if product's quantity is enough
-            if updated_quantity < 0:
-                print(
-                    f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
-                break
+            if order_quantity <= 0:
+                print("Quantity has to be greater than 0")
             else:
-                # Generate customer and order dictionary
-                customer_dict, order_dict, customer_id = handle_data(
-                    json_data, product_id, order_quantity)
-                # If handle_data does not return None
-                if customer_dict:
-                    # Write data to database
-                    json_data['customer'][customer_id] = customer_dict
-                    json_data['order'][order_id] = order_dict
-                    json_data['product'][product_id]['quantity'] = updated_quantity
-                    json_data['product'][product_id]['sold'] += order_quantity
-
-                    # create nested dictionary
-                    for order_id in json_data['order']:
-                        for customer_id in json_data['customer']:
-                            order_field = json_data['order'][order_id]
-
-                            # copy order dictionary and remove customer_id, customer_address
-                            nested_order_dict = order_field.copy()
-                            remove_key = ['customer_id',
-                                          'customer_address', 'reviewed']
-                            for k in remove_key:
-                                nested_order_dict.pop(k)
-
-                            # add new dictionary to the customer dictionary
-                            if json_data['order'][order_id]['customer_id'] == customer_id:
-                                json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
-                    # Write data to file
-                    json_file = open('data/data.json', 'w')
-                    json.dump(json_data, json_file, indent=4)
+                updated_quantity -= order_quantity
+                # Check if product's quantity is enough
+                if updated_quantity < 0:
                     print(
-                        f"\nYour order number is: {Style.BOLD}{order_id}{Style.END}\nPlease note for later use")
+                        f'\nWe only have {json_data["product"][product_id]["quantity"]} products left')
                     break
+                else:
+                    # Generate customer and order dictionary
+                    customer_dict, order_dict, customer_id = handle_data(
+                        json_data, product_id, order_quantity)
+                    # If handle_data does not return None
+                    if customer_dict:
+                        # Write data to database
+                        json_data['customer'][customer_id] = customer_dict
+                        json_data['order'][order_id] = order_dict
+                        json_data['product'][product_id]['quantity'] = updated_quantity
+                        json_data['product'][product_id]['sold'] += order_quantity
+
+                        # create nested dictionary
+                        for order_id in json_data['order']:
+                            for customer_id in json_data['customer']:
+                                order_field = json_data['order'][order_id]
+
+                                # copy order dictionary and remove customer_id, customer_address
+                                nested_order_dict = order_field.copy()
+                                remove_key = ['customer_id',
+                                            'customer_address', 'reviewed']
+                                for k in remove_key:
+                                    nested_order_dict.pop(k)
+
+                                # add new dictionary to the customer dictionary
+                                if json_data['order'][order_id]['customer_id'] == customer_id:
+                                    json_data["customer"][customer_id]["order"][order_id] = nested_order_dict
+                        # Write data to file
+                        json_file = open('data/data.json', 'w')
+                        json.dump(json_data, json_file, indent=4)
+                        print(
+                            f"\nYour order number is: {Style.BOLD}{order_id}{Style.END}\nPlease note for later use")
+                        break
         except Exception as e:
-            # print(e)
+            print(e)
             print('\n')
 
 
