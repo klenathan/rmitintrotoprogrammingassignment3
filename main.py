@@ -1,3 +1,17 @@
+# RMIT University Vietnam
+# Course: COSC2429 Introduction to Programming
+# Semester: 2021C
+# Assignment: 3
+# Author: 
+#         Thai Tran (s3891890)
+#         Thu Pham (s3878246)
+#         Thinh Nguyen (s3914412)
+#         Soohyuk Jang (s3928379)
+# Created date: 20/12/2021
+# Last modified date: 03/01/2022
+# Python version: 3.10.0
+
+
 import json
 from components.basic_features import list_all, search_item, search_by_name, purchase_tracking
 from components.additional_features import return_shipment, handle_review, best_books
@@ -5,16 +19,16 @@ from components.cls import cls
 from components.logo import welcome, bye
 from components.faq import faq
 
-#### note
+### note
 '''
 Video content           
 1. List all items # Thai          
-2. Search item by name # chia 2 
-3. Search item by item id # chia 2 
+2. Search item by name # Thu
+3. Search item by item id # Thai
 4. Customer information & purchase history #Thu
 
-5. Return shipment            
-6. Review order product # 
+5. Return shipment # Thinh     
+6. Review order product # Soohyuk
 7. Best-selling books rank #Thinh      
 8. Customer Service (FAQ) # Soohyuk
 Your option:  '''
