@@ -39,7 +39,6 @@ def handle_review(json_data):
                     # Get user's review
                     user_review = int(
                         input("\nHow do you rate the product from 1 to 5? "))
-                    average_point = 0
 
                     # Check if review input is valid (in range from 1 to 5)
                     if user_review > 5 or user_review < 1:
@@ -173,15 +172,15 @@ def best_books(json_data):
             table.align = 'l'
 
             # loop through product dictionary to add information to the table
-            for id in sorted_sold:
+            for product_id in sorted_sold:
                 table.add_row([
-                    id,
-                    json_data['product'][id]['title'],
-                    json_data['product'][id]['author'],
-                    json_data['product'][id]['quantity'],
-                    json_data['product'][id]['price'],
-                    f'{json_data["product"][id]["rating"]["average"]:.2f}',
-                    json_data['product'][id]['sold'],
+                    product_id,
+                    json_data['product'][product_id]['title'],
+                    json_data['product'][product_id]['author'],
+                    json_data['product'][product_id]['quantity'],
+                    json_data['product'][product_id]['price'],
+                    f'{json_data["product"][product_id]["rating"]["average"]:.2f}',
+                    json_data['product'][product_id]['sold'],
                 ])
             print(table)
             input("Press any key to go back to main menu ")

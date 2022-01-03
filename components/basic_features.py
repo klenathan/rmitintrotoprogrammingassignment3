@@ -160,7 +160,7 @@ def query_detail(json_data, user_option):
     user's option to purchase the item or not in string of "0" or "1"
     :param:
         json_data: dictionary containing all data from database (dict)
-        user_option: product ID needed to be query (str)
+        user_option: product ID needed to be queried (str)
     :return:
         product_option: user's option to purchase (str)
     """
@@ -220,7 +220,8 @@ def purchase_tracking(json_data):
                             # loop through the nested order dictionary to print out all order information
                             for order_detail in json_data['customer'][user_option]['order'][order_id]:
                                 print(
-                                    f'{Style.BOLD}{order_detail:12}{Style.END}: {json_data["customer"][user_option]["order"][order_id][order_detail]}')
+                                    f'{Style.BOLD}{order_detail:12}{Style.END}: '
+                                    f'{json_data["customer"][user_option]["order"][order_id][order_detail]}')
 
                     else:
                         print(

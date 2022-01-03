@@ -51,8 +51,7 @@ def handle_order(product_id, json_data):
 
                                 # copy order dictionary and remove customer_id, customer_address, and reviewed
                                 nested_order_dict = order_field.copy()
-                                remove_key = ['customer_id',
-                                            'customer_address', 'reviewed']
+                                remove_key = ['customer_id', 'customer_address', 'reviewed']
                                 for k in remove_key:
                                     nested_order_dict.pop(k)
 
