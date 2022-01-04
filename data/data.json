@@ -2,8 +2,8 @@
     "product": {
         "1": {
             "title": "Atomic Habits",
-            "quantity": 142,
-            "sold": 0,
+            "quantity": 141,
+            "sold": 1,
             "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
             "price": 11.98,
             "author": "James Clear",
@@ -268,7 +268,13 @@
             "email": "person1@mail.com",
             "phone_num": "0123456789",
             "address": "01 Main St",
-            "order": {}
+            "order": {
+                "Z733ZR6": {
+                    "product_id": "1",
+                    "quantity": 1,
+                    "total_cost": 11.98
+                }
+            }
         },
         "2": {
             "id": "2",
@@ -287,6 +293,15 @@
             "order": {}
         }
     },
-    "order": {},
+    "order": {
+        "Z733ZR6": {
+            "customer_id": "1",
+            "product_id": "1",
+            "quantity": 1,
+            "total_cost": 11.98,
+            "customer_address": "01 Main St",
+            "reviewed": "False"
+        }
+    },
     "return": {}
 }

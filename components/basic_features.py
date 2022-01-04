@@ -2,7 +2,7 @@
 # Course: COSC2429 Introduction to Programming
 # Semester: 2021C
 # Assignment: 3
-# Author: 
+# Author:
 #         Thai Tran (s3891890)
 #         Thu Pham (s3878246)
 #         Thinh Nguyen (s3914412)
@@ -104,6 +104,7 @@ def search_by_name(json_data):
     :return: None
     """
     product_exist = 0
+    search_result = []
     while True:
         book_name = input(
             "\nPlease enter the book title or press 0 to return to the main menu: ")
@@ -113,60 +114,72 @@ def search_by_name(json_data):
             cls()
             break
         # in other case
+        elif book_name == "":
+            input("\nInvalid name, press any key to try again")
+        elif book_name == " ":
+            input("\nInvalid name, press any key to try again")
         else:
             # check whether the item exists or not
-            try:
-                # loop through the product dictionary
-                for product_id in json_data['product']:
-                    title = json_data['product'][product_id]["title"]
 
-                    # in case the user input is valid
-                    if book_name.lower() == title.lower():
-                        product_exist += 1
+            # loop through the product dictionary
+            for product_id in json_data['product']:
+                title = json_data['product'][product_id]["title"]
 
-                        # loop through each nested product dictionary to print out all information
-                        for detail in json_data['product'][product_id]:
-                            if detail == "rating":
-                                print(
-                                    f'{Style.BOLD}{detail:15}{Style.END}: '
-                                    f'{json_data["product"][product_id][detail]["average"]:.2f}')
-                            else:
-                                print(
-                                    f'{Style.BOLD}{detail:15}{Style.END}: '
-                                    f'{json_data["product"][product_id][detail]}')
+                # in case the user input is valid
+                if book_name.lower() in title.lower():
 
-                        # ask whether they want to purchase this item
-                        print("\n0. Exit")
-                        print("1. Purchase")
-                        product_option = input(
-                            "Do you want to purchase this item? ")
+                    product_exist = 1
+                    search_result.append(product_id)
 
-                        # in case they want to purchase the item
-                        if product_option == "1":
-                            handle_order(product_id, json_data)
-                            input(
-                                "\nPress any key to go back to main menu: ")
-                            break
-                        # in case they do not want to purchase the item
-                        elif product_option == "0":
+            # Print search result
+            if product_exist == 0:
+                input("Product not found\nPress any key to try again")
+            else:
+                table = PrettyTable(
+                ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating"])
+                table.align = 'l'
+
+                # loop through product dictionary to add information to the table
+                for item in search_result:
+                    table.add_row([
+                        item,
+                        json_data['product'][item]['title'],
+                        json_data['product'][item]['author'],
+                        json_data['product'][item]['quantity'],
+                        json_data['product'][item]['price'],
+                        f'{json_data["product"][item]["rating"]["average"]:.2f}'
+                    ])
+                print(table)
+                while True:
+                    # Get user input
+                    user_opt = input("Choose by product id or press 0 to go back to main menu ")
+                    try:
+                        # If user chose "0"
+                        if user_opt == "0":
                             cls()
                             break
-                        # in case their input is invalid
+                        # in other case
                         else:
-                            input('Invalid option, press any key: ')
-                            break
+                            product_option = query_detail(json_data, user_opt)
 
-                # in case the user input is invalid
-                if product_exist == 0:
-                    print('Please try again: ')
-                    search_by_name(json_data)
-                cls()
+                            # in case they want to purchase the item
+                            if product_option == "1":
+                                handle_order(user_opt, json_data)
+                                input("\nPress any key to exit: ")
+                                cls()
+                                break
+                            # in case they do not want to purchase the item
+                            elif product_option == "0":
+                                cls()
+                                break
+                            # in case their input is invalid
+                            else:
+                                input('Invalid option, press any key to try again ')
+                                cls()
+                    # Print Error
+                    except Exception as e:
+                        print(f'{e} does not exist')
                 break
-
-            except Exception as e:
-                print(
-                    f"The item {e} does not exist! Please try the valid name!")
-
 
 def query_detail(json_data, user_option):
     """
