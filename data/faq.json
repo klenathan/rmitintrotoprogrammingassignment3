@@ -1,47 +1,47 @@
 {
-    "faq": {
-        "1": {
-            "q": "Where can I check the delivery?",
-            "a": "We don't support any services to track the location, but the customer is able to receive the current status through message."
-        },
-        "2": {
-            "q": "What do I need if I want to refund the product?",
-            "a": "In order to get refund, you need order id and the name of customer."
-        },
-        "3": {
-            "q": "Can I request additional books that are not on the list?",
-            "a": "If there are many requests, we will add them after reviewing them."
-        },
-        "4": {
-            "q": "How can I get the discount?",
-            "a": "The discount rate is be based on the previous purchase history, and 10% is the max discount."
-        },
-        "5": {
-            "q": "How can I rate a book?",
-            "a": "People that have purchased a book can only rate a book."
-        },
-        "6": {
-            "q": "Can I purchase a digital book?",
-            "a": "We don't support any digital version of a book. This feature will be added later on."
-        },
-        "7": {
-            "q": "When can I get my book?",
-            "a": "Normally, it will take 2 ~ 3 days, but it can be up to 7 days depends on the location."
-        },
-        "8": {
-            "q": "What's the standard for best selling books?",
-            "a": "It depends on sold quantities. It will be updated in realtime"
-        },
-        "9": {
-            "q": "How to find a book that I want to search in detail?",
-            "a": "You should know the name, or item id"
-        },
-        "10": {
-            "q": "What if it is out of stock?",
-            "a": "We check the our inventory regularly, but the customer can request if the stock is not supplemented."
-        }
+  "faq": {
+    "1": {
+      "q": "Where can I check the delivery?",
+      "a": "We don't support any services to track the location, but the customer is able to receive the current status through message."
     },
-    "custom": {
-        "0": "Example Question"
+    "2": {
+      "q": "What do I need if I want to refund the product?",
+      "a": "In order to get refund, you need order id and the name of customer."
+    },
+    "3": {
+      "q": "Can I request additional books that are not on the list?",
+      "a": "If there are many requests, we will add them after reviewing them."
+    },
+    "4": {
+      "q": "How can I get the discount?",
+      "a": "The discount rate is be based on the previous purchase history, and 10% is the max discount."
+    },
+    "5": {
+      "q": "How can I rate a book?",
+      "a": "People that have purchased a book can only rate a book."
+    },
+    "6": {
+      "q": "Can I purchase a digital book?",
+      "a": "We don't support any digital version of a book. This feature will be added later on."
+    },
+    "7": {
+      "q": "When can I get my book?",
+      "a": "Normally, it will take 2 ~ 3 days, but it can be up to 7 days depends on the location."
+    },
+    "8": {
+      "q": "What's the standard for best selling books?",
+      "a": "It depends on sold quantities. It will be updated in realtime"
+    },
+    "9": {
+      "q": "How to find a book that I want to search in detail?",
+      "a": "You should know the name, or item id"
+    },
+    "10": {
+      "q": "What if it is out of stock?",
+      "a": "We check the our inventory regularly, but the customer can request if the stock is not supplemented."
     }
+  },
+  "custom": {
+    "0": "Example Question"
+  }
 }

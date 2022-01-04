@@ -2,7 +2,7 @@
 # Course: COSC2429 Introduction to Programming
 # Semester: 2021C
 # Assignment: 3
-# Author: 
+# Author:
 #         Thai Tran (s3891890)
 #         Thu Pham (s3878246)
 #         Thinh Nguyen (s3914412)
@@ -16,6 +16,7 @@ import json
 from components.styling import Style
 from components.cls import cls
 
+
 def faq():
     """
     The function prints frequently asked question from faq.json file
@@ -26,7 +27,7 @@ def faq():
         # Open faq data file and decode to JSON
         with open('data/faq.json', 'r', encoding='utf-8') as faq_file:
             faq_data = json.load(faq_file)
-        
+
         # Loop through the faq dictionary
         i = 1
         for k in faq_data["faq"].keys():
@@ -35,14 +36,14 @@ def faq():
         # Get user's input
         user_option = input(
             '\nChoose a question you want to know more\nPress 0 to quit\nC for custom question\n')
-        # Selections 
-        try :
-            if user_option.lower() == "C".lower() :
+        # Selections
+        try:
+            if user_option.lower() == "C".lower():
                 # Get user's question input
                 custom_question = input('\nPlease write down your questions. '
-                    'The submitted question will be stored in our database and will be answered later.')
+                                        'The submitted question will be stored in our database and will be answered later.')
                 # Generate new question id
-                newid = int(list(faq_data["custom"].keys())[-1]) + 1 
+                newid = int(list(faq_data["custom"].keys())[-1]) + 1
                 # Write data to dict
                 faq_data["custom"][newid] = custom_question
                 # Write data to file
