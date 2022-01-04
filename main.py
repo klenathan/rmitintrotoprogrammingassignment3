@@ -77,43 +77,42 @@ if __name__ == '__main__':
         while True:
             user = user_option()
             json_data = open_file()
-            match user:
-                # Exit program
-                case 0:
-                    cls()
-                    print(bye)
-                    exit(0)
-                # List items and get info of a specific item
-                case 1:
-                    cls()
-                    list_all(json_data)
-                # Search item by name
-                case 2:
-                    cls()
-                    search_by_name(json_data)
-                # Search item by ID
-                case 3:
-                    cls()
-                    search_item(json_data)
-                # Track purchase history
-                case 4:
-                    cls()
-                    purchase_tracking(json_data)
-                # Return shipment
-                case 5:
-                    cls()
-                    return_shipment(json_data)
-                # Review
-                case 6:
-                    cls()
-                    handle_review(json_data)
-                # Best-selling books
-                case 7:
-                    cls()
-                    best_books(json_data)
-                # Customer Service (FAQ)
-                case 8:
-                    cls()
-                    faq()
+            # Exit program
+            if user == 0:
+                cls()
+                print(bye)
+                exit(0)
+            # List items and get info of a specific item
+            elif user == 1:
+                cls()
+                list_all(json_data)
+            # Search item by name
+            elif user == 2:
+                cls()
+                search_by_name(json_data)
+            # Search item by ID
+            elif user == 3:
+                cls()
+                search_item(json_data)
+            # Track purchase history
+            elif user == 4:
+                cls()
+                purchase_tracking(json_data)
+            # Return shipment
+            elif user == 5:
+                cls()
+                return_shipment(json_data)
+            # Review
+            elif user == 6:
+                cls()
+                handle_review(json_data)
+            # Best-selling books
+            elif user == 7:
+                cls()
+                best_books(json_data)
+            # Customer Service (FAQ)
+            elif user == 8:
+                cls()
+                faq()
     except KeyboardInterrupt:
         cls()

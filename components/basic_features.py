@@ -72,24 +72,7 @@ def search_item(json_data):
         else:
             # check whether the item exists or not
             try:
-                product_option = query_detail(json_data, user_option)
-
-                # in case they want to purchase the item
-                if product_option == "1":
-                    handle_order(user_option, json_data)
-                    input("\nPress any key to exit: ")
-                    cls()
-                    break
-                # in case they do not want to purchase the item
-                elif product_option == "0":
-                    cls()
-                    break
-                # in case their input is invalid
-                else:
-                    input('Invalid option, press any key to try again ')
-                    cls()
-                    search_item(json_data)
-                    break
+                purchase(json_data, user_option)
 
             except Exception as e:
                 print(e)
@@ -161,26 +144,37 @@ def search_by_name(json_data):
                             break
                         # in other case
                         else:
-                            product_option = query_detail(json_data, user_opt)
-
-                            # in case they want to purchase the item
-                            if product_option == "1":
-                                handle_order(user_opt, json_data)
-                                input("\nPress any key to exit: ")
-                                cls()
-                                break
-                            # in case they do not want to purchase the item
-                            elif product_option == "0":
-                                cls()
-                                break
-                            # in case their input is invalid
-                            else:
-                                input('Invalid option, press any key to try again ')
-                                cls()
+                            purchase(json_data, user_opt)
                     # Print Error
                     except Exception as e:
                         print(f'{e} does not exist')
                 break
+
+
+def purchase(json_data, user_opt):
+    """
+    The function prints out product's detailed description based ont its name/title
+    :param: json_data: dictionary containing all data from database (dict)
+            user_opt: the user option (str)
+    :return: None
+    """
+    while True:
+        product_option = query_detail(json_data, user_opt)
+
+        # in case they want to purchase the item
+        if product_option == "1":
+            handle_order(user_opt, json_data)
+            input("\nPress any key to exit: ")
+            cls()
+            break
+        # in case they do not want to purchase the item
+        elif product_option == "0":
+            cls()
+            break
+        # in case their input is invalid
+        else:
+            input('Invalid option, press any key to try again ')
+            cls()
 
 
 def query_detail(json_data, user_option):
