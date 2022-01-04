@@ -136,7 +136,7 @@ def search_by_name(json_data):
                 input("Product not found\nPress any key to try again")
             else:
                 table = PrettyTable(
-                ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating"])
+                    ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating"])
                 table.align = 'l'
 
                 # loop through product dictionary to add information to the table
@@ -152,7 +152,8 @@ def search_by_name(json_data):
                 print(table)
                 while True:
                     # Get user input
-                    user_opt = input("Choose by product id or press 0 to go back to main menu ")
+                    user_opt = input(
+                        "Choose by product id or press 0 to go back to main menu ")
                     try:
                         # If user chose "0"
                         if user_opt == "0":
@@ -180,6 +181,7 @@ def search_by_name(json_data):
                     except Exception as e:
                         print(f'{e} does not exist')
                 break
+
 
 def query_detail(json_data, user_option):
     """
