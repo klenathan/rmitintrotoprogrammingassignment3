@@ -16,7 +16,6 @@ import json
 from components.styling import Style
 from components.cls import cls
 
-
 def faq():
     """
     The function prints frequently asked question from faq.json file
@@ -27,12 +26,40 @@ def faq():
         # Open faq data file and decode to JSON
         with open('data/faq.json', 'r', encoding='utf-8') as faq_file:
             faq_data = json.load(faq_file)
-        i = 1
-        # Loop through the faq dictionary
-        for key, value in faq_data.items():
-            print(f'{Style.BOLD}{i}. {key}{Style.END}\n- {value}\n')
-            i += 1
         
-        input('Press any key to go back ')
-        cls()
-        break
+        # Loop through the faq dictionary
+        i = 1
+        for k in faq_data["faq"].keys():
+            print(f'{Style.BOLD}{i}. {faq_data["faq"][k]["q"]}')
+            i += 1
+        # Get user's input
+        user_option = input(
+            '\nChoose a question you want to know more\nPress 0 to quit\nC for custom question\n')
+        # Selections 
+        try :
+            if user_option.lower() == "C".lower() :
+                # Get user's question input
+                custom_question = input('\nPlease write down your questions. '
+                    'The submitted question will be stored in our database and will be answered later.')
+                # Generate new question id
+                newid = int(list(faq_data["custom"].keys())[-1]) + 1 
+                # Write data to dict
+                faq_data["custom"][newid] = custom_question
+                # Write data to file
+                with open('data/faq.json', 'w', encoding='utf-8') as faq_file:
+                    json.dump(faq_data, faq_file, indent=4)
+                input("Press any key to continue ")
+                cls()
+            elif user_option == "0":
+                cls()
+                break
+            elif user_option in faq_data["faq"]:
+                # Print data based on user's option
+                print("")
+                print(f'-  {faq_data["faq"][user_option]["q"]}')
+                print(f'-> {faq_data["faq"][user_option]["a"]}')
+                input("Press any key to continue ")
+                cls()
+        # Print Errors
+        except Exception as e:
+            print(e)
