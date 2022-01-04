@@ -96,15 +96,13 @@ def search_by_name(json_data):
         if book_name == "0":
             cls()
             break
+        # check for case sensitivity
+        elif book_name == "" or book_name == " ":
+            input("\nInvalid name, press any key to try again ")
         # in other case
-        elif book_name == "":
-            input("\nInvalid name, press any key to try again")
-        elif book_name == " ":
-            input("\nInvalid name, press any key to try again")
         else:
-            # check whether the item exists or not
-
             # loop through the product dictionary
+            # to check whether the item exists or not
             for product_id in json_data['product']:
                 title = json_data['product'][product_id]["title"]
 
@@ -116,7 +114,7 @@ def search_by_name(json_data):
 
             # Print search result
             if product_exist == 0:
-                input("Product not found\nPress any key to try again")
+                input("Product not found\nPress any key to try again ")
             else:
                 table = PrettyTable(
                     ['ID', 'Book Title', 'Author', 'Quantity', 'Price', "Rating"])
@@ -133,21 +131,24 @@ def search_by_name(json_data):
                         f'{json_data["product"][item]["rating"]["average"]:.2f}'
                     ])
                 print(table)
-                while True:
-                    # Get user input
-                    user_opt = input(
-                        "Choose by product id or press 0 to go back to main menu ")
-                    try:
-                        # If user chose "0"
-                        if user_opt == "0":
-                            cls()
-                            break
-                        # in other case
-                        else:
-                            purchase(json_data, user_opt)
-                    # Print Error
-                    except Exception as e:
-                        print(f'{e} does not exist')
+                # Get user input
+                user_opt = input(
+                    "Choose by product id or press 0 to go back to main menu ")
+                try:
+                    # If user chose "0"
+                    if user_opt == "0":
+                        cls()
+                        break
+                    # in case user input the product id in the table
+                    elif user_opt in search_result:
+                        purchase(json_data, user_opt)
+                    # in other case
+                    else: 
+                        print("Please enter the product ID in the table")
+                        search_by_name(json_data)
+                # Print Error
+                except Exception as e:
+                    print(f'{e} does not exist')
                 break
 
 
@@ -189,7 +190,8 @@ def query_detail(json_data, user_option):
     """
     cls()
     print('\n')
-
+    print(
+        f'{Style.BOLD}{"product_id":12}{Style.END}: {user_option}')
     # loop through the product dictionary that matches the user input to print out all product information
     for detail in json_data['product'][user_option]:
         if detail == "rating":

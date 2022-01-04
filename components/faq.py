@@ -31,17 +31,17 @@ def faq():
         # Loop through the faq dictionary
         i = 1
         for k in faq_data["faq"].keys():
-            print(f'{Style.BOLD}{i}. {faq_data["faq"][k]["q"]}')
+            print(f'{Style.BOLD}{i}. {faq_data["faq"][k]["q"]}{Style.END}')
             i += 1
         # Get user's input
         user_option = input(
-            '\nChoose a question you want to know more\nPress 0 to quit\nC for custom question\n')
+            '\nChoose a question you want to know more\nPress 0 to quit\nC for custom question\nYour option: ')
         # Selections
         try:
             if user_option.lower() == "C".lower():
                 # Get user's question input
                 custom_question = input('\nPlease write down your questions. '
-                                        'The submitted question will be stored in our database and will be answered later.')
+                                        'The submitted question will be stored in our database and will be answered later. \n')
                 # Generate new question id
                 newid = int(list(faq_data["custom"].keys())[-1]) + 1
                 # Write data to dict
@@ -57,10 +57,13 @@ def faq():
             elif user_option in faq_data["faq"]:
                 # Print data based on user's option
                 print("")
-                print(f'-  {faq_data["faq"][user_option]["q"]}')
-                print(f'-> {faq_data["faq"][user_option]["a"]}')
-                input("Press any key to continue ")
+                print(f'- {Style.BOLD}{faq_data["faq"][user_option]["q"]}{Style.END}')
+                print(f'->{Style.BOLD}{faq_data["faq"][user_option]["a"]}{Style.END}')
+                input("\nPress any key to continue ")
                 cls()
+            else: 
+                print(f'{Style.RED}{"Invalid input! Please try again!"}{Style.END}')
+                print()
         # Print Errors
         except Exception as e:
             print(e)
