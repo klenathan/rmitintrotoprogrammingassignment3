@@ -8,7 +8,7 @@
 #         Thinh Nguyen (s3914412)
 #         Soohyuk Jang (s3928379)
 # Created date: 20/12/2021
-# Last modified date: 03/01/2022
+# Last modified date: 05/01/2022
 # Python version: 3.10.0
 
 
@@ -23,13 +23,15 @@ from components.faq import faq
 '''
 Video content           
 1. List all items # Thai          
-2. Search item by name # Thu
-3. Search item by item id # Thai
+2. Search item by item id # Thai
+
+3. Search item by name # Thu
 4. Customer information & purchase history #Thu
 
 5. Return shipment # Thinh     
-6. Review order product # Soohyuk
-7. Best-selling books rank #Thinh      
+6. Best-selling books rank #Thinh      
+
+7. Review order product # Soohyuk
 8. Customer Service (FAQ) # Soohyuk
 Your option:  '''
 
@@ -58,11 +60,11 @@ def user_option():
 Choose one of these options:
 0. Exit
                    
-1. List all items               2. Search item by name
-3. Search item by item id       4. Customer information & purchase history
+1. List all items               2. Search item by item id
+3. Search item by name          4. Customer information & purchase history
 
-5. Return shipment              6. Review order product
-7. Best-selling books rank      8. Customer Service (FAQ)
+5. Return shipment              6. Best-selling books rank
+7. Review order product         8. Customer Service (FAQ)
 Your option:  ''')
 
     if option not in ['0', '1', '2', '3', '4', '5', '6', '7', '8']:
@@ -86,14 +88,14 @@ if __name__ == '__main__':
             elif user == 1:
                 cls()
                 list_all(json_data)
-            # Search item by name
+            # Search item by ID
             elif user == 2:
                 cls()
-                search_by_name(json_data)
-            # Search item by ID
+                search_item(json_data)
+            # Search item by name
             elif user == 3:
                 cls()
-                search_item(json_data)
+                search_by_name(json_data)
             # Track purchase history
             elif user == 4:
                 cls()
@@ -102,14 +104,14 @@ if __name__ == '__main__':
             elif user == 5:
                 cls()
                 return_shipment(json_data)
-            # Review
+            # Best-selling books
             elif user == 6:
                 cls()
-                handle_review(json_data)
-            # Best-selling books
+                best_books(json_data)
+            # Review
             elif user == 7:
                 cls()
-                best_books(json_data)
+                handle_review(json_data)
             # Customer Service (FAQ)
             elif user == 8:
                 cls()
