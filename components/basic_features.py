@@ -107,7 +107,7 @@ def search_by_name(json_data):
                 title = json_data['product'][product_id]["title"]
 
                 # in case the user input is valid
-                if book_name.lower() in title.lower():
+                if book_name.lower().replace(' ', '') in title.lower().replace(' ', ''):
 
                     product_exist = 1
                     search_result.append(product_id)
@@ -145,6 +145,7 @@ def search_by_name(json_data):
                         break
                     else: 
                         print("Please enter the product ID in the table")
+                        search_by_name(json_data)
                 # Print Error
                 except Exception as e:
                     print(f'{e} does not exist')
