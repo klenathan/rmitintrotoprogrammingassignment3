@@ -142,10 +142,9 @@ def search_by_name(json_data):
                     # in case user input the product id in the table
                     elif user_opt in search_result:
                         purchase(json_data, user_opt)
-                    # in other case
+                        break
                     else: 
                         print("Please enter the product ID in the table")
-                        search_by_name(json_data)
                 # Print Error
                 except Exception as e:
                     print(f'{e} does not exist')
